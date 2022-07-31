@@ -1,0 +1,23 @@
+{
+    "id": 246003,
+    "api_model": "products",
+    "api_link": "https://api.artic.edu/api/v1/products/246003",
+    "title": "Edgar Degas Little Fourteen-Year-Old Dancer Sculpture",
+    "external_sku": 109017,
+    "image_url": "https://shop-images.imgix.net/109017_2.jpg",
+    "web_url": "https://shop.artic.edu/products/109017",
+    "description": "<p>Sculpture adapted from the Edgar Degas\u2019 <em>The Little Fourteen-Year-Old Dancer</em>, 1880. Featuring a young student of the Paris Opera Ballet dance school, a Belgian named Marie van Goethem. The resin figure is hand-cast and hand-finished.</p>\n<ul>\n<li>Dimensions: 13.5 x 5.5 x 5.5 in.</li>\n<li>Materials: Resin</li>\n<li>Hand cast and finished.</li>\n<li>Dust gently.</li>\n</ul>\n<p><em>Additional Shipping $15 per Order</em>.</p>\n<p><em>This item cannot be shipped to a destination outside the United States</em>.</p>",
+    "price_display": "<p>$120</p>",
+    "min_compare_at_price": null,
+    "max_compare_at_price": null,
+    "min_current_price": 120,
+    "max_current_price": 120,
+    "artist_ids": [
+        40543
+    ],
+    "artwork_ids": [],
+    "exhibition_ids": [],
+    "last_updated_source": "2022-06-17T00:00:00-05:00",
+    "last_updated": "2022-06-18T23:01:46-05:00",
+    "timestamp": "2022-06-19T01:47:36-05:00"
+}

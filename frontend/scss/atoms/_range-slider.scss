@@ -1,0 +1,95 @@
+/***
+
+range-slider
+============
+
+```
+<div class="range-slider s-capped" data-behavior="rangeSlider" data-param="date" data-range-values="dateRangeValues">
+  <em class="range-slider__display f-secondary">
+    <span data-range-min-display></span>&ndash;<span data-range-max-display></span>
+  </em>
+
+  <div class="range-slider__slider" data-range-slider></div>
+
+  <div class="range-slider__custom">
+      <div class="range-slider__custom-row">
+          <div class="range-slider__custom-input">
+              <input type="num" id="rangeFrom" name="rangeFrom" data-range-custom-from />
+          </div>
+
+          <div class="range-slider__custom-input">
+              <input type="num" id="rangeTo" name="rangeTo" data-range-custom-to />
+          </div>
+      </div>
+
+      <button class="range-slider__custom-btn" data-range-custom-btn>OK</button>
+  </div>
+</div>
+
+<button class="m-filters__show-more-toggle f-secondary" data-behavior="filterToggleShowMore">
+    <svg class="icon--arrow"><use xlink:href="#icon--arrow" /></svg>
+    <span>Custom range</span>
+</button>
+```
+
+***/
+
+.range-slider {
+  position: relative;
+  max-height: 188px;
+  overflow: hidden;
+}
+
+.range-slider__display {
+  display: block;
+  color: $color__text--secondary;
+  font-style: normal;
+}
+
+.range-slider__custom {
+  margin-top: 28px;
+}
+
+.range-slider__custom-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.range-slider__custom-input {
+  margin-left: 20px;
+}
+
+.range-slider__custom-input:first-child {
+  margin-left: 0;
+}
+
+.range-slider__custom-input input {
+  @extend %input;
+  @extend %f-secondary;
+  @include untuck;
+}
+
+.range-slider__custom-btn {
+  @extend %f-tag;
+  @include untuck;
+  display: inline-block;
+  margin-top: 24px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: $border-radius;
+  background-color: $color__black--5;
+  color: $color__black--54;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.range-slider.s-capped {
+  max-height: 120px;
+}
+
+.range-slider.s-capped + .m-filters__show-more-toggle svg {
+  transform: rotate(90deg);
+}

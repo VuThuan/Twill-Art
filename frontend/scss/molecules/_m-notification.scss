@@ -1,0 +1,213 @@
+/***
+
+```
+<div class="m-notification" data-behavior="notification">
+    <p class="m-notification__text f-secondary">
+        <svg class="icon--info" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--info"></use></svg>Because of the weather conditions we're closed today. <a href="#">Learn More</a>
+    </p>
+    <button class="m-notification__close" data-notification-closer=""><svg class="icon--close" aria-title="Close message"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--close"></use></svg></button>
+</div>
+<div class="m-notification m-notification--secondary" data-behavior="notification">
+    <p class="m-notification__text f-secondary">
+        <svg class="icon--alert" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--alert"></use></svg>Secondary notification with icon
+    </p>
+    <button class="m-notification__close" data-notification-closer=""><svg class="icon--close" aria-title="Close message"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--close"></use></svg></button>
+</div>
+<div class="m-notification m-notification--tertiary" data-behavior="notification">
+    <p class="m-notification__text f-secondary">
+        <svg class="icon--alert" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--alert"></use></svg>Tertiary notification with icon
+    </p>
+    <button class="m-notification__close" data-notification-closer=""><svg class="icon--close" aria-title="Close message"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--close"></use></svg></button>
+</div>
+<div class="m-notification m-notification--quaternary" data-behavior="notification">
+    <p class="m-notification__text f-secondary">
+        <svg class="icon--alert" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--alert"></use></svg>Quaternary notification with icon
+    </p>
+    <button class="m-notification__close" data-notification-closer=""><svg class="icon--close" aria-title="Close message"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--close"></use></svg></button>
+</div>
+<div class="m-notification m-notification--error" data-behavior="notification">
+    <p class="m-notification__text f-secondary">
+        <svg class="icon--alert" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--alert"></use></svg>Error notification with icon
+    </p>
+    <button class="m-notification__close" data-notification-closer=""><svg class="icon--close" aria-title="Close message"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--close"></use></svg></button>
+</div>
+<div class="m-notification m-notification--quinary" data-behavior="notification">
+    <p class="m-notification__title f-module-title-1">
+        Quinary with title
+    </p>
+    <p class="m-notification__text f-secondary">
+        Dictum consectetur nunc eu luctus lacus <a href="#">integer auctor</a> velit ac porttitor malesuada
+    </p>
+    <button class="m-notification__close" data-notification-closer=""><svg class="icon--close" aria-title="Close message"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--close"></use></svg></button>
+</div>
+```
+
+***/
+
+
+.m-notification {
+  @include background-fill;
+  display: block;
+  padding-top: 16px;
+  padding-right: 48px;
+  padding-bottom: 20px;
+  background-color: $color__error;
+  transition: all .1s linear;
+}
+
+.m-notification--header {
+  padding-right: 0px;
+  background-color: transparentize($color__error, 0.03);
+
+  // Wait until cookie has been confirmed
+  display: none;
+}
+
+.m-notification--header-loaded {
+  display: block;
+}
+
+.m-notification--header__inner {
+  @extend %container;
+  position: relative;
+}
+
+// WEB-2354: Prevent text from colliding with close button
+.m-notification--header .m-notification__text {
+  margin-right: 28px;
+
+  @include breakpoint('small+') {
+    br {
+      display: none;
+    }
+  }
+}
+
+.m-notification--header .m-notification__close {
+  width: auto;
+  margin-right: 0;
+  padding-right: 4px;
+}
+
+.m-notification.s-hide {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+}
+
+
+.m-notification__text,
+.m-notification__title {
+  color: $color__text--title-contrast;
+}
+
+.m-notification__title.f-module-title-1 {
+  @include tucked-margin-top($f-module-title-1, ('xsmall': 12));
+}
+
+.m-notification__text.f-secondary {
+  @include tucked-margin-top($f-secondary, ('xsmall': 12));
+
+  .m-notification__title + & {
+    @include tucked-margin-top($f-secondary, ('xsmall': 20));
+  }
+}
+
+.m-notification__text a {
+  color: $color__text--title-contrast;
+  text-decoration: underline;
+}
+
+.m-notification__text svg:not(:first-child) {
+  margin-left: 8px;
+}
+
+.m-notification__text svg:first-child {
+  margin-right: 8px;
+}
+
+.m-notification__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border: 0 none;
+  border-radius: 0;
+  background: transparent;
+  color: $color__text--title-contrast;
+  cursor: pointer;
+
+  // WEB-2354: Raise close button on small and xsmall
+  @include breakpoint('small-') {
+    top: -4px;
+  }
+}
+
+
+
+
+.m-notification--secondary {
+  background-color: $color__black--90;
+}
+
+.m-notification--tertiary {
+  background-color: $color__bg--primary;
+
+  .m-notification__title,
+  .m-notification__text,
+  .m-notification__text a,
+  .m-notification__close {
+    color: $color__text--secondary;
+  }
+}
+
+.m-notification--quaternary {
+  background-color: $color__grey--100;
+}
+
+.m-notification--quinary {
+  margin-top: 40px;
+  padding-left: 20px;
+  border: 1px solid $color__black--10;
+  background-color: transparent;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .m-notification__title {
+    color: $color__text;
+  }
+
+  .m-notification__text,
+  .m-notification__close {
+    color: $color__text--secondary;
+  }
+
+  .m-notification__text a {
+    color: $color__link;
+    text-decoration: none;
+
+    &:hover,
+    &:focus:hover {
+      color: $color__link--hover;
+    }
+
+    &:active:hover {
+      color: $color__link--active;
+    }
+  }
+}
+
+.m-notification--error {
+  background-color: $color__bg--error;
+
+  .m-notification__title,
+  .m-notification__text,
+  .m-notification__text a,
+  .m-notification__close {
+    color: $color__text--error;
+  }
+}

@@ -1,0 +1,79 @@
+/***
+
+top-link
+============
+
+The top link - on the site it hides and shows as you scroll up and down on medium+.
+
+```
+<a class="top-link" href="#a17">
+  <svg class="icon--arrow" aria-label="top of page">
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--arrow">
+  </svg>
+</a>
+```
+
+***/
+.top-link {
+  display: none;
+  position: fixed;
+  z-index: map-get($zindexs, 'articleTopLink');
+  right: 40px;
+  bottom: -48px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0 none;
+  border-radius: $border-radius;
+  background-color: rgba($color__black, .7);
+  color: $color__white;
+  line-height: 45px;
+  text-align: center;
+  cursor: pointer;
+  transform: rotate(-90deg);
+  transition: bottom .25s $bezier--bounce;
+  will-change: bottom;
+
+  @include breakpoint('medium+') {
+    display: block;
+  }
+
+  #demo > & {
+    display: block;
+    position: static;
+    margin: 20px;
+  }
+}
+
+.top-link:hover,
+.top-link:focus,
+.top-link:active {
+  background-color: rgba($color__black, .9);
+  color: $color__white;
+}
+
+.top-link svg {
+  position: relative;
+  right: 3px;
+  top: 1px;
+  vertical-align: middle;
+}
+
+.top-link::before {
+  content: '';
+  position: absolute;
+  right: 18px;
+  top: 16px;
+  bottom: 16px;
+  width: 1.5px;
+  background-color: $color__white;
+}
+
+.top-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}

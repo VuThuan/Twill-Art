@@ -1,0 +1,57 @@
+.m-post-hero {
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+}
+
+.m-post-hero__image {
+  width: 100%;
+
+  @include breakpoint('large+') {
+    width: colspan(38, 'large');
+  }
+
+  @include breakpoint('xlarge') {
+    width: colspan(38, 'xlarge');
+  }
+}
+
+.m-post-hero__image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.m-post-hero__main {
+  width: 100%;
+
+  @include breakpoint('large+') {
+    width: colspan(18, 'large');
+    margin-left: colspan(2, 'large');
+  }
+
+  @include breakpoint('xlarge') {
+    width: colspan(18, 'xlarge');
+    margin-left: colspan(2, 'xlarge');
+  }
+}
+
+.m-post-hero__main .f-list-4 {
+  @include tucked-margin-top($f-list-4, ('xsmall': 36, 'small+': 44));
+
+  @include breakpoint('large+') {
+    &:first-child {
+      @include tucked-align-top($f-list-4, 'large');
+    }
+  }
+
+  @include breakpoint('xlarge') {
+    &:first-child {
+      @include tucked-align-top($f-list-4, 'xlarge');
+    }
+  }
+}
+
+.m-post-hero__main .f-body {
+  @include tucked-margin-top($f-body, ('xsmall': 28, 'small+': 36));
+}

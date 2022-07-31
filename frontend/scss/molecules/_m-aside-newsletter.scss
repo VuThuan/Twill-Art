@@ -1,0 +1,465 @@
+/***
+
+```
+<form class="m-aside-newsletter">
+  <fieldset>
+    <legend><h2 class="title f-list-3">Sign up to our newsletter and receive updates.</h2></legend>
+    <span class="m-aside-newsletter__field">
+      <label for="newsletterEmail" class="f-secondary">Email address</label>
+      <input type="text" id="newsletterEmail" name="newsletterEmail" class="f-secondary">
+      <button type="submit" class="f-secondary">Sign Up</button>
+    </span>
+    </fieldset>
+</form>
+<form class="m-aside-newsletter m-aside-newsletter--inline">
+  <fieldset>
+    <legend><h2 class="title f-list-3">Sign up to our newsletter and receive updates.</h2></legend>
+    <span class="m-aside-newsletter__field">
+      <label for="newsletterEmail" class="f-secondary">Email address</label>
+      <input type="text" id="newsletterEmail" name="newsletterEmail" class="f-secondary">
+      <button type="submit" class="f-secondary">Sign Up</button>
+    </span>
+    </fieldset>
+</form>
+<form class="m-aside-newsletter m-aside-newsletter--wide">
+  <fieldset>
+    <legend><h2 class="title f-list-3">Sign up to our newsletter and receive updates.</h2></legend>
+    <span class="m-aside-newsletter__field">
+      <label for="newsletterEmail" class="f-secondary">Email address</label>
+      <input type="text" id="newsletterEmail" name="newsletterEmail" class="f-secondary">
+      <button type="submit" class="f-secondary">Sign Up</button>
+    </span>
+    </fieldset>
+</form>
+<form class="m-aside-newsletter m-aside-newsletter--wide s-error">
+  <fieldset>
+    <legend><h2 class="title f-list-3">Sign up to our newsletter and receive updates.</h2></legend>
+    <span class="m-aside-newsletter__field">
+      <label for="newsletterEmail" class="f-secondary">Email address</label>
+      <input type="text" id="newsletterEmail" name="newsletterEmail" class="f-secondary">
+      <button type="submit" class="f-tag">Sign Up</button>
+    </span>
+    <em class="m-aside-newsletter__msg m-aside-newsletter__msg--error f-buttons">Please enter a valid email address</em>
+  </fieldset>
+</form>
+<form class="m-aside-newsletter m-aside-newsletter--wide s-success">
+  <fieldset>
+    <legend><h2 class="title f-list-3">Sign up to our newsletter and receive updates.</h2></legend>
+    <span class="m-aside-newsletter__field">
+      <label for="newsletterEmail" class="f-secondary">Email address</label>
+      <input type="text" id="newsletterEmail" name="newsletterEmail" class="f-secondary">
+      <button type="submit" class="f-tag">Sign Up</button>
+    </span>
+    <em class="m-aside-newsletter__msg m-aside-newsletter__msg--success f-buttons">Successfully signed up to the newsletter</em>
+  </fieldset>
+</form>
+```
+
+***/
+
+.m-aside-newsletter {
+  position: relative;
+  margin-top: 120px;
+
+  .m-inline-aside &,
+  &.o-blocks__block {
+    border-top: 1px solid $color__rules--primary;
+  }
+}
+
+.m-aside-newsletter.s-loading {
+  @extend %loader;
+  pointer-events: none;
+}
+
+.m-aside-newsletter fieldset {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.m-aside-newsletter.s-loading fieldset {
+  opacity: 0.4;
+}
+
+.m-aside-newsletter legend {
+  float: left;
+}
+
+.m-aside-newsletter legend .title {
+  display: block;
+}
+
+.m-aside-newsletter legend .title.f-list-3 {
+  @include tucked-margin-top($f-list-3, ('xsmall': 36, 'medium+': 40));
+}
+
+.m-aside-newsletter__field {
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+  clear: left;
+}
+
+.m-aside-newsletter label {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.m-aside-newsletter label.f-secondary {
+  @include tucked-margin-top($f-secondary, ('xsmall': 40, 'small': 28));
+}
+
+.m-aside-newsletter input {
+  display: block;
+  flex: 1 1 auto;
+  width: auto;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.m-aside-newsletter input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #fff inset;
+}
+
+
+.m-aside-newsletter button.m-aside-newsletter__btn--submit {
+  @include untuck;
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  height: 48px;
+  margin: 16px 0 0 0;
+  padding: 0 20px;
+  border: 1px solid $color__rules--secondary;
+  border-radius: 0;
+  background-color: transparent;
+  color: $color__text--title;
+  cursor: pointer;
+
+  &:hover,
+  &:focus:hover {
+    border-color: $color__black--30;
+    color: $color__text--title;
+  }
+
+  &:active:hover {
+    border-color: $color__black--42;
+    color: $color__text--title;
+  }
+
+  @include breakpoint('small+') {
+    width: auto;
+    margin-left: -1px;
+  }
+}
+
+@include breakpoint('medium+') {
+  .m-aside-newsletter input:hover + button.m-aside-newsletter__btn--submit {
+    border-color: $color__input-border--hover;
+  }
+
+  .m-aside-newsletter input:focus + button.m-aside-newsletter__btn--submit {
+    border-color: $color__input-border--focus;
+  }
+
+  .m-aside-newsletter .s-error input,
+  .m-aside-newsletter .s-error input + button.m-aside-newsletter__btn--submit {
+    border-color: $color__input-border--error;
+  }
+}
+
+.m-aside-newsletter__msg {
+  @include untuck;
+  @include background-fill;
+  display: block;
+  background-color: $color__link;
+  color: $color__white;
+  font-style: normal;
+}
+
+.m-aside-newsletter__msg.f-buttons {
+  padding-top: 11px;
+  padding-bottom: 13px;
+
+  @include breakpoint('medium+') {
+    padding-top: 10px;
+    padding-bottom: 14px;
+  }
+}
+
+.m-aside-newsletter__msg--error {
+  background-color: $color__error;
+}
+
+// Variation `.m-aside-newsletter--inline
+
+.m-aside-newsletter--inline .m-aside-newsletter__field {
+  padding-top: 32px;
+}
+
+.m-aside-newsletter--inline .m-aside-newsletter__field label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 0;
+  border: 0 none;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+}
+
+.m-aside-newsletter--inline .m-aside-newsletter__field label + input {
+  margin-top: 0;
+}
+
+.m-aside-newsletter--inline button.m-aside-newsletter__btn--submit {
+  @include breakpoint('small+') {
+    margin-top: 0;
+  }
+}
+
+.m-aside-newsletter--inline .m-aside-newsletter__also {
+  padding: 8px 2px;
+  text-align: right;
+}
+
+.m-aside-newsletter--inline .m-aside-newsletter__also span::before,
+.m-aside-newsletter--inline .m-aside-newsletter__also span::after, {
+  content: none;
+}
+
+// Variation `.m-aside-newsletter--wide`
+
+.m-aside-newsletter--wide {
+  @include background-fill;
+  background-color: $color__bg--secondary;
+
+  &.o-blocks__block {
+    border-top: 0;
+  }
+}
+
+.m-aside-newsletter--wide fieldset {
+  @include breakpoint('large+') {
+    padding-left: colspan(29, large);
+  }
+
+  @include breakpoint('xlarge') {
+    padding-left: colspan(29, xlarge);
+  }
+}
+
+.m-aside-newsletter--wide legend {
+  @include breakpoint('large+') {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+.m-aside-newsletter--wide input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px $color__bg--secondary inset;
+}
+
+.m-aside-newsletter--wide legend .title {
+  @include breakpoint('large+') {
+    width: colspan(29, large);
+  }
+
+  @include breakpoint('xlarge') {
+    width: colspan(29, xlarge);
+  }
+}
+
+.m-aside-newsletter--wide legend .title.f-list-3 {
+  @include tucked-margin-top($f-list-3, ('xsmall': 44, 'small+': 52, 'large+': 82, 'xlarge': 84));
+}
+
+.m-aside-newsletter--wide .m-aside-newsletter__field__wrapper {
+  padding-top: 0.02px;
+  padding-bottom: 16px; // 28
+
+  @include breakpoint('small+') {
+    padding-top: 20px;
+    padding-bottom: 16px; // 40
+  }
+
+  @include breakpoint('large+') {
+    padding-top: 52px;
+    padding-bottom: 16px; // 60
+  }
+}
+
+.m-aside-newsletter--wide .m-aside-newsletter__field {
+  @include breakpoint('small+') {
+    padding-top: 20px;
+    flex-flow: row nowrap;
+  }
+
+  @include breakpoint('large+') {
+    padding-top: 0px;
+  }
+}
+
+.m-aside-newsletter--wide label {
+  @include breakpoint('small+') {
+    width: auto;
+  }
+}
+
+.m-aside-newsletter--wide label + input {
+  margin-top: 0;
+}
+
+.m-aside-newsletter--wide input {
+  padding-bottom: 3px;
+  padding-left: 0;
+  border-width: 0;
+  border-bottom-width: 1px;
+
+  @include breakpoint('small+') {
+    margin-left: 20px;
+  }
+}
+
+.m-aside-newsletter--wide button.m-aside-newsletter__btn--submit {
+  width: auto;
+  margin-top: 0;
+  padding: 0;
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-color: $color__rules--secondary;
+  border-radius: 0;
+  color: $color__link--accent;
+  text-align: right;
+
+  &:hover,
+  &:focus:hover {
+    border-color: $color__rules--secondary;
+    color: $color__link--accent-hover;
+  }
+
+  &:active:hover {
+    border-color: $color__rules--secondary;
+    color: $color__link--accent-active;
+  }
+}
+
+.m-aside-newsletter--wide input:hover + button.m-aside-newsletter__btn--submit {
+  border-color: $color__input-border--hover;
+}
+
+.m-aside-newsletter--wide input:focus + button.m-aside-newsletter__btn--submit {
+  border-color: $color__input-border--focus;
+}
+
+.m-aside-newsletter--wide .s-error input,
+.m-aside-newsletter--wide .s-error input + button.m-aside-newsletter__btn--submit {
+  border-color: $color__input-border--error;
+}
+
+.m-aside-newsletter--wide .m-aside-newsletter__btn--list__wrapper {
+  text-align: right;
+}
+
+.m-aside-newsletter--wide button.m-aside-newsletter__btn--list {
+  @include untuck;
+  height: 48px;
+  margin: 16px 0 0 0;
+  padding: 0;
+  border: transparent;
+  border-radius: 0;
+  background-color: transparent;
+  color: $color__text--title;
+  cursor: pointer;
+
+  &:hover,
+  &:focus:hover {
+    border-color: $color__black--30;
+    color: $color__text--title;
+  }
+
+  &:active:hover {
+    border-color: $color__black--42;
+    color: $color__text--title;
+  }
+
+  @include breakpoint('small+') {
+    width: auto;
+    margin-left: -1px;
+  }
+
+  svg {
+    transform: rotate(90deg);
+    transition: transform .2s $bezier--ease-in-out;
+  }
+
+  &.m-aside-newsletter__btn--list--opened svg {
+    transform: rotate(-90deg);
+  }
+}
+
+.m-aside-newsletter__list-wrapper {
+  height: 0;
+  overflow: hidden;
+  transition: height .2s $bezier--ease-in-out, padding .2s $bezier--ease-in-out;
+
+  &[aria-hidden="false"] {
+    height: auto;
+    overflow: initial;
+
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+}
+
+.m-aside-newsletter__list {
+  @include breakpoint('small+') {
+    display: flex;
+  }
+}
+
+.m-aside-newsletter__list .m-fieldset__field--group {
+  margin-top: 8px;
+}
+
+.m-aside-newsletter__list__right .m-fieldset__field--group {
+  @include breakpoint('xsmall') {
+    margin-top: 4px;
+  }
+}
+
+.m-aside-newsletter--wide .m-aside-newsletter__msg {
+  @include background-fill;
+}
+
+.m-aside-newsletter--wide .checkbox label {
+  padding-right: 16px;
+}
+
+$f-aside-subtitle: generate-font-obj(
+  (
+    font-family: $sans-serif-font,
+    font-family-loaded: $sans-serif-font--loaded,
+    font-loaded-class: $sans-serif-font-loaded-class,
+    settings: (
+      'xsmall': (font-size: 13, line-height: 24, font-weight: 300, letter-spacing: 0.01em, push: 1),
+      'medium+': (font-size: 14, line-height: 28, push: 0)
+    )
+  )
+);
+
+
+.m-aside-newsletter .subtitle {
+  @include font-styles($f-aside-subtitle);
+
+  a {
+    color: $color__link--accent;
+
+    &:hover {
+      color: $color__link--accent-hover;
+    }
+  }
+}

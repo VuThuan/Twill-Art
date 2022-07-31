@@ -1,0 +1,90 @@
+.m-quick-search-links {
+  position: relative;
+  margin-top: 20px;
+  padding-top: .2px;
+  padding-bottom: .2px;
+  overflow: hidden;
+
+  .m-search-bar ~ & {
+    z-index: 0;
+  }
+}
+
+.m-quick-search-links::before,
+.m-quick-search-links::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  height: 100%;
+  pointer-events: none;
+  transition: opacity .2s linear;
+}
+
+.m-quick-search-links::before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+  opacity: 0;
+}
+
+.m-quick-search-links::after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+}
+
+.m-quick-search-links.s-scroll-start::before {
+  opacity: 1;
+}
+
+.m-quick-search-links.s-scroll-end::after {
+  opacity: 0;
+}
+
+.m-quick-search-links__links {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  flex-flow: row nowrap;
+  margin-bottom: -16px;
+  padding-bottom: 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.m-quick-search-links__links::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* autoprefixer: off */
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+}
+
+.m-quick-search-links__links.s-mousedown::before,
+.m-quick-search-links__links.s-mousedown * {
+  /* autoprefixer: off */
+  cursor: move;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+.m-quick-search-links__links > li {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  margin-left: 8px;
+}
+
+.m-quick-search-links__links > li:first-child {
+  margin-left: 0;
+}

@@ -1,0 +1,48 @@
+.m-header-block {
+  position: relative;
+  margin-top: 0;
+  padding-top: 40px;
+
+  @include breakpoint('small') {
+    padding-top: 44px;
+  }
+
+  @include breakpoint('medium+') {
+    padding-top: 52px;
+  }
+
+  & + *,
+  & + .m-intro-block,
+  & + .m-title-bar,
+  .o-visit & + .m-title-bar {
+    margin-top: 24px;
+
+    @include breakpoint('small+') {
+      margin-top: 32px;
+    }
+
+    @include breakpoint('medium+') {
+      margin-top: 40px;
+    }
+  }
+
+  &:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background-color: $color__rules--primary;
+  }
+
+  .m-links-bar + &::before {
+    content: none;
+    display: none;
+  }
+}
+
+.m-header-block .title {
+  margin-top: 0;
+}

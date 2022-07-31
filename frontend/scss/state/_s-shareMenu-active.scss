@@ -1,0 +1,16 @@
+.s-shareMenu-active {
+
+  .g-mask {
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+
+    @include breakpoint('medium+') {
+      background-color: rgba(0,0,0,0);
+    }
+  }
+
+  .m-share-menu {
+    display: block;
+  }
+}

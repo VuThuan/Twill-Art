@@ -1,0 +1,275 @@
+
+.m-search-bar {
+  position: relative;
+}
+
+.m-search-bar__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.m-search-bar .m-search-bar__label--hiden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 0;
+  border: 0 none;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+}
+
+.m-search-bar input[type=text] {
+  flex: 1;
+  height: 56px;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 0;
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  background: $color__bg--primary;
+  color: $color__text--title;
+  outline: none;
+
+  @include placeholder() {
+    color: $color__text--secondary;
+  }
+}
+
+.m-search-bar.s-autocomplete-active input[type=text],
+.m-search-bar input[type=text]:focus {
+  border-color: $color__rules--focus;
+  background-color: $color__white;
+}
+
+.m-search-bar.s-autocomplete-active input[type=text] + .m-search-bar__submit,
+.m-search-bar input[type=text]:focus + .m-search-bar__submit {
+  background-color: $color__rules--focus;
+  color: $color__white;
+}
+
+.m-search-bar__submit,
+.m-search-bar__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  border-radius: 0;
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  background: $color__bg--tertiary;
+  color: $color__white;
+  line-height: 56px;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover,
+  &:focus:hover {
+    background-color: $color__black;
+  }
+}
+
+.m-search-bar__clear {
+  display: none;
+}
+
+// Juggle if there is a value on load
+.m-search-bar .s-populated ~ .m-search-bar__submit {
+  display: none;
+}
+
+.m-search-bar .s-populated ~ .m-search-bar__clear {
+  display: inline-block;
+}
+
+.m-search-bar__submit svg,
+.m-search-bar__clear svg {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.m-search-bar__loader {
+  @extend %loader;
+  display: none;
+  position: absolute;
+  top: 14px;
+  right: 70px;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ block
+
+.m-search-bar--block {
+
+  padding-top: 8px;
+
+  @include tucked-margin-top($f-body-editorial, ('xsmall': 40, 'small+': 56));
+
+  &:first-child {
+    @include tucked-align-top($f-body-editorial);
+  }
+
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ subtle
+
+.m-search-bar--subtle input[type=text],
+.m-search-bar--subtle .m-search-bar__submit,
+.m-search-bar--subtle .m-search-bar__clear {
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.m-search-bar--subtle .m-search-bar__submit,
+.m-search-bar--subtle .m-search-bar__clear {
+  color: $color__text--secondary;
+
+  &:hover,
+  &:focus:hover {
+    background-color: transparent;
+    color: $color__black;
+  }
+}
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ inside o-collection-search
+
+.o-collection-search {
+
+  .m-search-bar input[type=text] {
+    color: $color__text--secondary;
+
+    @include placeholder() {
+      color: $color__text--tertiary;
+    }
+  }
+
+  .m-search-bar.s-autocomplete-active input[type=text]:focus,
+  .m-search-bar input[type=text]:focus {
+    border-color: transparent;
+    background-color: $color__bg--primary;
+    color: $color__text--title;
+  }
+
+  .m-search-bar .m-search-bar__submit {
+    color: $color__text--tertiary;
+  }
+
+  .m-search-bar .m-search-bar__submit:hover,
+  .m-search-bar .m-search-bar__submit:focus {
+    color: $color__text--secondary;
+  }
+
+  .m-search-bar .m-search-bar__submit:active {
+    color: $color__text--title;
+  }
+
+  .m-search-bar.s-autocomplete-active input[type=text]:focus + .m-search-bar__submit,
+  .m-search-bar input[type=text]:focus + .m-search-bar__submit {
+    background-color: $color__bg--primary;
+    color: $color__text--title;
+  }
+
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ autocomplete
+
+.m-search-bar__autocomplete {
+  @include untuck;
+  display: block;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: $color__bg;
+  box-shadow: $shadow;
+}
+
+.m-search-bar__autocomplete li:not(:first-child) {
+  border-top: 1px solid $color__rules--tertiary;
+}
+
+.m-search-bar__autocomplete a {
+  display: block;
+  padding: 10px 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  overflow: hidden;
+
+  // For aligning w/ SVG icon(s)
+  span {
+    vertical-align: middle;
+  }
+}
+
+// TODO: Confirm if this is always in effect?
+.m-search-bar__autocomplete.f-secondary a {
+  padding-top: 9px;
+  padding-bottom: 12px;
+
+  @include breakpoint('large+') {
+    padding-top: 6px;
+    padding-bottom: 11px;
+  }
+}
+
+.m-search-bar__autocomplete a:not([class]) {
+  background-color: $color__white;
+  color: $color__text--secondary;
+
+  &:hover {
+    background-color: $color__bg--secondary;
+    color: $color__text--title;
+  }
+
+  &:hover {
+    background-color: $color__bg--primary;
+    color: $color__text--title;
+  }
+}
+
+.m-search-bar__autocomplete a.suggestion--fulltext {
+  @extend .btn--tertiary;
+  color: $color__white;
+
+  svg {
+    margin-right: 16px;
+  }
+}
+
+
+.m-search-bar.s-autocomplete-active .m-search-bar__clear {
+  display: block;
+  position: absolute;
+  right: 56px;
+  border: 0 none;
+  background-color: transparent;
+  color: $color__text--title;
+
+  &:focus:hover,
+  &:hover {
+    background-color: transparent;
+    color: $color__text--title;
+  }
+}
+
+.m-search-bar.s-loading .m-search-bar__loader {
+  display: block;
+}
+
+.m-search-bar.s-loading .m-search-bar__clear,
+.m-search-bar.s-loading .m-search-bar__autocomplete-close {
+  display: none;
+}

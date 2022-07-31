@@ -1,0 +1,223 @@
+// @mixin float-clear
+@use "sass:math";
+
+@mixin float-clear() {
+  &::after {
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+// @mixin background-fill
+@mixin background-fill {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    margin-left: -50vw;
+    background-color: inherit;
+    pointer-events: none;
+  }
+}
+
+
+// @mixin keyline-fill
+@mixin keyline-full($position:top, $color:$color__black) {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    @if $position == top {
+      bottom: 100%;
+    } @else {
+      top: 100%;
+    }
+    width: 100vw;
+    margin-left: -50vw;
+    border-top: 1px solid $color;
+    pointer-events: none;
+  }
+}
+
+/***
+
+## mixin loader
+
+Creates a load spinner.
+
+***/
+
+@mixin ajax-loader() {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: $color__red--100;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transform-origin: 20px 20px;
+  animation: ajax-loader .9s linear infinite;
+}
+
+@keyframes ajax-loader {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@mixin objectFitFix() {
+  .no-objectFit & {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: none;
+  }
+}
+
+@mixin opaqueBg($bg1, $bg2) {
+  background-color: $bg1;
+
+  @supports (backdrop-filter: blur(5px)) or (-webkit-backdrop-filter: blur(5px)) {
+    background-color: $bg2;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+}
+
+@function strip-units($number) {
+  @return math.div($number, $number * 0 + 1);
+}
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+// To fix collapsing margins
+.clearfix {
+  &:before,&:after {
+    display:table;
+    content:"";
+    line-height:0;
+  }
+  &:after {
+    clear:both;
+  }
+}
+
+@mixin tucked-margin-top($font-obj, $distances, $single-bp: false) {
+  $settings: false;
+  $line-height: 0;
+  $margin: 0;
+  $push: 0;
+  $new-line-height: 0;
+  $new-margin: 0;
+  $new-push: 0;
+  @if $font-obj {
+    $settings: map-get($font-obj, settings);
+  }
+  @if $settings {
+    @each $name, $point in $breakpoints-with-directions {
+      // First see if font settings has a line height for this breakpoint
+      @if map-has-key($settings, $name) {
+        $settings-at-breakpoint: map-get($settings, $name);
+        @if map-has-key($settings-at-breakpoint, line-height) {
+          $new-line-height: map-get($settings-at-breakpoint, line-height);
+        }
+        @if map-has-key($settings-at-breakpoint, push) {
+          $new-push: map-get($settings-at-breakpoint, push);
+        }
+      }
+      // Now see if a margin was specified for this breakpoint
+      @if map-has-key($distances, $name) {
+        $new-margin: map-get($distances, $name);
+      }
+      // Now set the margin top
+      @if ($new-margin != $margin or $new-line-height != $line-height or $new-push != $push) {
+        $line-height: $new-line-height;
+        $margin: $new-margin;
+        $push: $new-push;
+        @if ($name == 'xsmall' or $single-bp == $name) {
+          margin-top: #{$margin - $line-height}px;
+        } @else {
+          @include breakpoint(#{$name}) {
+            margin-top: #{$margin - $line-height}px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin tucked-align-top($font-obj, $single-bp: false) {
+  $settings: false;
+  $pull: 0;
+  $new-pull: 0;
+  @if $font-obj {
+    $settings: map-get($font-obj, settings);
+  }
+  @if $settings {
+    @each $name, $point in $breakpoints-with-directions {
+      // First see if font settings has a line height for this breakpoint
+      @if map-has-key($settings, $name) {
+        $settings-at-breakpoint: map-get($settings, $name);
+        @if map-has-key($settings-at-breakpoint, pull) {
+          $new-pull: map-get($settings-at-breakpoint, pull);
+        }
+      }
+      // Now set the margin top
+      @if ($new-pull != $pull) {
+        $pull: $new-pull;
+        $base-height-into-pull: floor(math.div($pull, $base-height)); // round or floor? erm
+        // Round will be closer but has the risk of drawing too much negative margin
+        $margin-top: 0 - ($base-height-into-pull * $base-height);
+        @if ($name == 'xsmall' or $single-bp == $name) {
+          margin-top: #{$margin-top}px;
+        } @else {
+          @include breakpoint(#{$name}) {
+            margin-top: #{$margin-top}px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin sr-only-attributes {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

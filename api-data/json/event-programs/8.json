@@ -1,0 +1,11 @@
+{
+    "id": 8,
+    "api_model": "event-programs",
+    "api_link": "https://api.artic.edu/api/v1/event-programs/8",
+    "title": "Highlights",
+    "is_affiliate_group": false,
+    "is_event_host": false,
+    "last_updated_source": "2018-08-10T10:48:54-05:00",
+    "last_updated": "2022-06-18T23:18:12-05:00",
+    "timestamp": "2022-06-19T01:48:49-05:00"
+}

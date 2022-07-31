@@ -1,0 +1,111 @@
+
+
+.m-fieldset {
+  position: relative;
+
+  & + & {
+    margin-top: 40px;
+  }
+}
+
+.m-fieldset::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-color: $color__rules--primary;
+}
+
+.m-fieldset__legend {
+  float: left;
+}
+
+.m-fieldset__legend > span {
+  display: block;
+  width: 100%;
+  padding-bottom: .2px;
+}
+
+.m-fieldset__legend + * {
+  clear: both;
+  padding-top: 28px;
+}
+
+.m-fieldset__fields {
+  margin-top: 28px;
+}
+
+.m-fieldset__field {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 28px;
+  padding-top: .02px;
+  padding-bottom: .02px;
+}
+
+.m-fieldset__field--group .label {
+  width: 100%;
+}
+
+.m-fieldset__field--group,
+.m-fieldset__field--group + .m-fieldset__field {
+  margin-top: 36px;
+}
+
+.m-fieldset__field--checkbox + .m-fieldset__field--checkbox,
+.m-fieldset__field--radio + .m-fieldset__field--radio {
+  margin-top: 4px;
+}
+
+.m-fieldset__field .input,
+.m-fieldset__field .textarea,
+.m-fieldset__field .select,
+.m-fieldset__field .checkbox,
+.m-fieldset__field .radio,
+.m-fieldset__group-label {
+  width: 100%;
+}
+
+.m-fieldset__field .input.m-fieldset__input-narrow-x4,
+.m-fieldset__field .textarea.m-fieldset__input-narrow-x4,
+.m-fieldset__field .select.m-fieldset__input-narrow-x4,
+.m-fieldset__field .input.m-fieldset__input-narrow-x3,
+.m-fieldset__field .textarea.m-fieldset__input-narrow-x3,
+.m-fieldset__field .select.m-fieldset__input-narrow-x3
+{
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.m-fieldset__field .input.m-fieldset__input-narrow-x4:last-child,
+.m-fieldset__field .textarea.m-fieldset__input-narrow-x4:last-child,
+.m-fieldset__field .select.m-fieldset__input-narrow-x4:last-child,
+.m-fieldset__field .input.m-fieldset__input-narrow-x3:last-child,
+.m-fieldset__field .textarea.m-fieldset__input-narrow-x3:last-child,
+.m-fieldset__field .select.m-fieldset__input-narrow-x3:last-child
+{
+  margin-right: 0px;
+}
+
+.m-fieldset__field .input.m-fieldset__input-narrow-x4,
+.m-fieldset__field .textarea.m-fieldset__input-narrow-x4,
+.m-fieldset__field .select.m-fieldset__input-narrow-x4
+{
+  width: calc(25% - 15px);
+}
+
+.m-fieldset__field .input.m-fieldset__input-narrow-x3,
+.m-fieldset__field .textarea.m-fieldset__input-narrow-x3,
+.m-fieldset__field .select.m-fieldset__input-narrow-x3
+{
+  width: calc(33% - 12px);
+}
+
+.m-fieldset__field .checkbox + .checkbox,
+.m-fieldset__field .checkbox + .radio,
+.m-fieldset__field .radio + .radio,
+.m-fieldset__field .radio + .checkbox {
+  margin-top: 4px;
+}

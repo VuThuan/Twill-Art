@@ -1,0 +1,63 @@
+/***
+
+hr
+==========
+
+Styling `hr` and an element equivalent. `.hr` is often used to divide titles from listing and generally draw horizontal key lines where required.
+
+```
+<span class="hr"></span>
+```
+
+***/
+
+
+hr,
+.hr {
+  display: block;
+  height: 0;
+  margin: 28px 0 -1px;
+  border: 0;
+  border-top: 1px solid $color__rules--primary;
+
+  @include breakpoint('small+') {
+    margin-top: 36px;
+  }
+
+  @include breakpoint('medium+') {
+    margin-top: 40px;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .m-listing-header + & {
+    margin-top: 16px;
+  }
+
+  .o-grid-listing + & {
+    margin-top: 36px;
+
+    @include breakpoint('medium+') {
+      margin-top: 60px;
+    }
+  }
+
+  &.hr--flush-top,
+  .o-grid-listing + &.hr--flush-top {
+    margin-top: -1px;
+
+    @include breakpoint('medium+') {
+      margin-top: -1px;
+    }
+  }
+
+  &.hr--dark {
+    border-top-color: $color__rules--quaternary;
+
+    @include breakpoint('medium+') {
+      margin-top: 75px;
+    }
+  }
+}

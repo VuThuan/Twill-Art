@@ -1,0 +1,16 @@
+/***
+
+intro
+==========
+
+Sets color of intro text
+
+```
+<span class="intro f-body">Cauleen Smith: Human_3.0 Reading Listz</span>
+```
+
+***/
+
+.intro {
+  color: $color__text--secondary;
+}

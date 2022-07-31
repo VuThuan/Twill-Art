@@ -1,0 +1,64 @@
+/***
+
+info-button-trigger
+==================
+
+Triggers the display of `info-button-info`. The content of the `span` is fed into the info box.
+
+```
+<button class="info-button-trigger" aria-label="Image info" data-behavior="infoButtonTrigger">
+  <svg class="icon--info" area-hidden="true"><use xlink:href="#icon--info" /></svg>
+  <span>Credit Mike Byrne, AREA 17</span>
+</button>
+
+```
+
+***/
+
+.info-button-trigger {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0 none;
+  background: transparent;
+  color: $color__text--tertiary;
+  cursor: pointer;
+  vertical-align: text-bottom;
+
+  &:hover,
+  &:focus:hover {
+    color: $color__text--secondary;
+  }
+
+  &:active:hover {
+    color: $color__text--tertiary;
+  }
+}
+
+.info-button-trigger span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 0;
+  border: 0 none;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+}
+
+.info-button-trigger svg {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+dt .info-button-trigger {
+  vertical-align: text-top;
+  margin-top: 2px;
+}
+dt #h-iiif-manifest {
+  margin-right: 8px;
+}

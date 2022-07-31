@@ -1,0 +1,28 @@
+.m-article-actions {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 40px;
+  margin-top: 8px;
+
+  .o-form.o-blocks__block + & {
+    display: none;
+  }
+}
+
+.o-article__primary-actions .m-article-actions {
+  margin-top: 0;
+}
+
+.m-article-actions--keyline-top {
+  margin-top: 40px;
+  padding-top: 7px;
+  border-top: 1px solid $color__rules--primary;
+}
+
+.m-article-actions__action {
+  flex: 0 0 auto;
+}
+
+.m-article-actions__action:not(:first-child) {
+  margin-left: 4px;
+}

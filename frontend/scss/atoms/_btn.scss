@@ -1,0 +1,456 @@
+/***
+
+btn
+==========
+
+```
+<button class="btn f-buttons">Action</button>
+<button class="btn btn--secondary f-buttons">Action</button>
+<button class="btn btn--tertiary f-buttons">Action</button>
+<button class="btn btn--quaternary f-buttons">Action</button>
+<button class="btn btn--quinary f-buttons">Action</button>
+<button class="btn btn--senary f-buttons">Action</button>
+<button class="btn btn--septenary f-buttons">Action</button>
+<button class="btn btn--octonary f-buttons">Action</button>
+<button class="btn btn--nonary f-buttons">Action</button>
+<button class="btn btn--transparent f-buttons">Action</button>
+<br><br>
+<button class="btn btn--secondary btn--w-icon f-buttons"><svg aria-hidden="true" class="icon--new-window"><use xlink:href="#icon--new-window" /></svg>Action</button>
+<button class="btn f-buttons" disabled>Disabled</button>
+<button class="btn btn--icon"><svg class="icon--share--24"><use xlink:href="#icon--share--24" /></svg></button>
+<button class="btn icon-circle-48"><svg class="icon--share--24"><use xlink:href="#icon--share--24" /></svg></button>
+<button class="btn btn--secondary btn--icon-sq"><svg class="icon--print--24"><use xlink:href="#icon--print--24" /></svg></button>
+<button class="btn btn--senary f-buttons s-loading">Action</button>
+<br><br>
+<button class="btn btn--full f-buttons">Action</button>
+```
+
+***/
+/*
+
+##### PHP include
+
+views/components/atoms/btn.blade.php
+
+Variable | Purpose | Required?
+--- | --- | ---
+$tag | HTML tag of the element is selectable | No, defaults to `button`
+$font | font class of the text is selectable | No, defaults to `f-buttons`
+$variation | variation, lets you pick color way/con button type | No
+$disabled | is the button disabled? | No
+$loading | is the button showing a loading state? | No
+$id | optional `ID` | No
+$behavior | optional `data-behavior` | No
+$dataAttributes | optional `data-` attributes | No
+$href | link to point to | No
+$type | if `button` optional type for submit, cancel | No
+$download | if the button triggers a download file | No
+$gtmAttributes | for adding Google Tag Manager attributes | No
+$ariaLabel | accessibility label | No
+$icon | optional icon display | No
+$slot | Text for the btn | Yes
+
+Demonstrated in **statics/toybox**
+
+Example usage:
+
+```
+<pre><code>@component('components.atoms._btn')
+    @slot('variation', 'btn--septenary')
+    @slot('icon', 'icon--new-window')
+    Septenary
+@endcomponent
+@component('components.atoms._btn')
+    @slot('variation', 'btn--tertiary btn--icon')
+    @slot('font', '')
+    @slot('icon', 'icon--print--24')
+@endcomponent</code></pre>
+```
+
+***/
+
+
+// primary, secondary, tertiary, quaternary, quinary, senary, septenary, octonary, nonary, denary
+
+.btn {
+  @extend %link-transition;
+  display: inline-block;
+  padding-right: 27px;
+  padding-left: 27px;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  background-color: $color__link--accent;
+  color: $color__white;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-appearance: none;
+
+  & + & {
+    margin-left: 12px;
+  }
+
+  &:hover,
+  &:focus:hover {
+    background-color: $color__link--accent-hover;
+    color: $color__white;
+  }
+
+  &.s-active,
+  &:active:hover {
+    background-color: $color__link--accent-active;
+    color: $color__white;
+  }
+
+  &.s-hidden {
+    display: none;
+  }
+}
+
+.btn[class*=f-] {
+  @include untuck;
+}
+
+.btn.f-buttons {
+  padding-top: 10px;
+  padding-bottom: 12px;
+
+  @include breakpoint('medium+') {
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+}
+
+.btn--sm.f-buttons {
+  padding-top: 6px;
+  padding-bottom: 8px;
+
+  @include breakpoint('medium+') {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}
+
+.btn--secondary {
+  border-color: $color__rules--secondary;
+  background-color: $color__white;
+  color: $color__text--title;
+
+  &:hover,
+  &:focus:hover {
+    border-color: $color__input-border--hover;
+    background-color: $color__white;
+    color: $color__text--title;
+  }
+
+  &.s-active,
+  &:active:hover {
+    border-color: $color__input-border--focus;
+    background-color: $color__white;
+    color: $color__text--title;
+  }
+}
+
+.btn--tertiary {
+  background-color: $color__link;
+
+  &:hover,
+  &:focus:hover {
+    background-color: $color__link--hover;
+  }
+
+  &.s-active,
+  &:active:hover {
+    background-color: $color__link--active;
+  }
+}
+
+.btn--quaternary {
+  background-color: $color__black--90;
+
+  &:hover,
+  &:focus:hover {
+    background-color: $color__black--80;
+  }
+
+  &.s-active,
+  &:active:hover {
+    background-color: $color__black--90;
+  }
+}
+
+.btn--quinary {
+  background-color: $color__black--5;
+  color: $color__text--title;
+
+  &:hover,
+  &:focus:hover {
+    background-color: $color__black--10;
+    color: $color__text--title;
+  }
+
+  &.s-active,
+  &:active:hover {
+    background-color: $color__black--5;
+    color: $color__text--title;
+  }
+}
+
+.btn--senary {
+  background-color: $color__blue;
+  color: $color__white;
+
+  &:hover,
+  &:focus:hover {
+    background-color: $color__blue--hover;
+    color: $color__white;
+  }
+
+  &.s-active,
+  &:active:hover {
+    background-color: $color__blue--active;
+    color: $color__white;
+  }
+}
+
+.btn--septenary {
+  background-color: rgba($color__black, .5);
+  color: $color__white;
+
+  &:hover,
+  &:focus:hover {
+    background-color: rgba($color__black, .6);
+    color: $color__white;
+  }
+
+  &.s-active,
+  &:active:hover {
+    background-color: rgba($color__black, .7);
+    color: $color__white;
+  }
+
+  &.btn:disabled,
+  &.btn:disabled:hover,
+  &.btn:disabled:focus:hover,
+  &.btn:disabled:active:hover {
+    background-color: rgba($color__black, .5);
+    color: rgba($color__white, .2);
+    opacity: 1;
+  }
+}
+
+.btn--octonary {
+  background-color: rgba($color__black, .2);
+  color: $color__white;
+
+  &:hover,
+  &:focus:hover {
+    background-color: rgba($color__black, .3);
+    color: $color__white;
+  }
+
+  &.s-active,
+  &:active:hover {
+    background-color: rgba($color__black, .4);
+    color: $color__white;
+  }
+
+  &.btn:disabled,
+  &.btn:disabled:hover,
+  &.btn:disabled:focus:hover,
+  &.btn:disabled:active:hover {
+    background-color: rgba($color__black, .2);
+    color: rgba($color__white, .2);
+    opacity: 1;
+  }
+}
+
+.btn--nonary {
+  background-color: rgba($color__black, .2);
+  color: $color__white;
+
+  &:hover,
+  &:focus:hover {
+    background-color: rgba($color__black, .5);
+    color: $color__white;
+  }
+
+  &.s-active,
+  &:active:hover {
+    background-color: rgba($color__black, .75);
+    color: $color__white;
+  }
+
+  &.btn:disabled,
+  &.btn:disabled:hover,
+  &.btn:disabled:focus:hover,
+  &.btn:disabled:active:hover {
+    background-color: rgba($color__black, .2);
+    color: rgba($color__white, .2);
+    opacity: 1;
+  }
+}
+
+.btn--contrast {
+  border-color: rgba($color__white, .2);
+  background-color: transparent;
+  color: $color__text--title-contrast;
+
+  &:hover,
+  &:focus:hover {
+    border-color: rgba($color__white, .3);
+    background-color: transparent;
+    color: $color__text--title-contrast;
+  }
+
+  &.s-active,
+  &:active:hover {
+    border-color: rgba($color__white, .4);
+    background-color: transparent;
+    color: $color__text--title-contrast;
+  }
+}
+
+.btn--contrast-secondary {
+  background-color: rgba($color__white, .1);
+  color: $color__text--title-contrast;
+
+  &:hover,
+  &:focus:hover {
+    background-color: rgba($color__white, .15);
+    color: $color__text--title-contrast;
+  }
+
+  &.s-active,
+  &:active:hover {
+    background-color: rgba($color__white, .2);
+    color: $color__text--title-contrast;
+  }
+}
+
+.btn--transparent {
+  border-color: transparent;
+  background-color: transparent;
+  color: $color__text--title;
+
+  &:hover,
+  &:focus:hover {
+    border-color: transparent;
+    background-color: transparent;
+    color: $color__text--title;
+  }
+
+  &.s-active,
+  &:active:hover {
+    border-color: transparent;
+    background-color: transparent;
+    color: $color__text--title;
+  }
+}
+
+.btn svg {
+  display: inline-block;
+  margin-top: 2px;
+  margin-right: 9px;
+  vertical-align: text-top;
+}
+
+.btn--disabled,
+.btn[disabled] {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.btn.s-loading,
+.btn.s-loading:hover,
+.btn.s-loading:focus,
+.btn.s-loading:active {
+  @extend %loader;
+  border: 1px solid $color__rules--secondary;
+  background-color: $color__white;
+  color: transparent;
+}
+
+.btn.s-loading::after {
+  content: '';
+}
+
+.btn.btn--icon,
+.btn.btn--icon-sq {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  line-height: 32px;
+  text-align: center;
+}
+
+  .o-fullscreen-image__img-actions > li .btn.btn--icon,
+  .o-fullscreen-image__img-actions > li .btn.btn--icon-sq {
+    display: inline-block;
+  }
+
+.btn.btn--icon-circle-48 {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+}
+
+.btn.btn--icon-sq {
+  width: 48px;
+  height: 48px;
+  border-radius: 0;
+  line-height: 48px;
+  text-align: center;
+}
+
+.btn.btn--icon svg,
+.btn.btn--icon-sq svg {
+  display: inline-block;
+  position: relative;
+  top: 16px;
+  margin: -1px auto 0;
+  vertical-align: top;
+  transform: translateY(-50%);
+}
+
+  .btn.btn--icon-sq svg,
+  .btn.btn--icon-circle-48 svg {
+    top: 24px;
+  }
+
+.btn.btn--full {
+  display: block;
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.btn.s-hidden {
+  display: none;
+}
+
+
+
+.btn.btn--icon.s-active .icon--close {
+  transform-origin: 8px 8px;
+  animation: rotate45deg .1s normal forwards;
+}
+
+.o-blocks .o-blocks__block.btn-module {
+  min-width: initial;
+  width: initial;
+}
+
+.o-blocks .o-blocks__block dt a,
+.o-blocks .o-blocks__block dt a:active {
+  text-decoration: underline;
+  color: $color__black--90;
+}
+
+.o-blocks .o-blocks__block dt a:focus,
+.o-blocks .o-blocks__block dt a:hover {
+  color: $color__grey--110;
+}

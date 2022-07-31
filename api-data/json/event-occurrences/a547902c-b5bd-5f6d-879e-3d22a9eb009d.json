@@ -1,0 +1,20 @@
+{
+    "id": "a547902c-b5bd-5f6d-879e-3d22a9eb009d",
+    "api_model": "event-occurrences",
+    "api_link": "https://api.artic.edu/api/v1/event-occurrences/a547902c-b5bd-5f6d-879e-3d22a9eb009d",
+    "title": "The Artist's Studio (August 26\u201328)",
+    "event_id": 5480,
+    "short_description": "All visitors are invited to stop by the Ryan Learning Center and explore a drop-in studio project.",
+    "description": "<p>All visitors are invited to stop by the Ryan Learning Center and explore a drop-in studio project.</p><p><a href=\"https://www.artic.edu/events?program=1\" rel=\"noopener noreferrer\" target=\"_blank\">See all upcoming dates for the Artist's Studio. </a></p><p>This project has been designed with social distancing in mind. Parties of visitors will be physically separated from each other, and each party will work with a separate set of supplies.</p><p>The space will close for 15 minutes periodically to refresh art materials and maintain cleanliness.</p>",
+    "image_url": "https://artic-web.imgix.net/1e0723df-4ffc-424f-85c7-6e709947f1d0/J3744_037-int.jpg?rect=0%2C63%2C3000%2C1688&auto=format%2Ccompress&q=80&fit=crop&crop=faces%2Cedges%2Centropy&w=1200&h=675",
+    "is_private": false,
+    "start_at": "2022-08-27T11:00:00-05:00",
+    "end_at": "2022-08-27T15:00:00-05:00",
+    "location": "Ryan Learning Center",
+    "button_url": null,
+    "button_text": "Buy Tickets",
+    "button_caption": "<p>Free, no registration required</p>",
+    "last_updated_source": "2022-05-17T09:34:00-05:00",
+    "last_updated": "2022-06-18T23:17:49-05:00",
+    "timestamp": "2022-06-19T01:48:49-05:00"
+}

@@ -1,0 +1,21 @@
+.sg-icons {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 4px 0 24px 20px;
+  background: $color__bg--primary;
+  color: $color__black;
+
+  #demo & {
+    background-color: transparent;
+  }
+}
+
+.sg-icons svg {
+  flex: 0 0 auto;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.sg-icons svg:hover {
+  color: $color__link--accent;
+}

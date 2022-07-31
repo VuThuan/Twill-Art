@@ -1,0 +1,62 @@
+.m-split-block {
+
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 28px;
+
+  @include breakpoint('small+') {
+    flex-flow: row nowrap;
+  }
+
+}
+
+.m-split-block div {
+
+  margin: 16px 0;
+
+  @include breakpoint('small+') {
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: 8px;
+    }
+
+    &:first-child {
+      margin-left: 0;
+      margin-right: 8px;
+    }
+
+  }
+
+}
+
+// Removes baseline adjustments
+.m-split-block p {
+
+  &:before, &:after {
+    content: initial !important;
+  }
+
+}
+
+.m-split-block--half div {
+  flex-basis: 100%;
+
+  @include breakpoint('small+') {
+    flex-basis: 50%;
+  }
+
+}
+
+
+.m-split-block--quarter div {
+
+  &:first-child {
+    flex-basis: 25%;
+  }
+
+  &:last-child {
+    flex-basis: 75%;
+  }
+
+}

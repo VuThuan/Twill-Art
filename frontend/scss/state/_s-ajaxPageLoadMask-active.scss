@@ -1,0 +1,42 @@
+/***
+
+Ajax Page Load Mask - active
+============================
+
+Masking the page when an Ajax page load is happening
+
+***/
+
+.s-ajaxPageLoadMask-active {
+
+  .g-mask {
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color__white, 1);
+    opacity: 0;
+  }
+}
+
+.s-collection-search-active.s-ajaxPageLoadMask-active,
+.s-collection-filters-active.s-ajaxPageLoadMask-active {
+  .g-mask {
+
+    @include breakpoint('medium+') {
+      background-color: rgba($color__white, 1);
+      opacity: .5;
+    }
+
+    @include breakpoint('small-') {
+      opacity: 1;
+      background-color: rgba($color__bg--tertiary, .25);
+    }
+  }
+
+  .o-collection-filters::after {
+    @include breakpoint('small-') {
+      right: 0;
+      bottom: 0;
+      opacity: .2;
+    }
+  }
+}

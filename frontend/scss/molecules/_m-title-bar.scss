@@ -1,0 +1,144 @@
+.m-title-bar {
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-top: 48px;
+  padding-top: .02px;
+
+  @include breakpoint('small+') {
+    margin-top: 60px;
+  }
+
+  @include breakpoint('large+') {
+    margin-top: 72px;
+  }
+
+  &.m-title-bar--compact {
+    margin-top: 24px;
+
+    @include breakpoint('small+') {
+      margin-top: 30px;
+    }
+
+    @include breakpoint('large+') {
+      margin-top: 36px;
+    }
+  }
+
+  &.m-title-bar--no-hr,
+  hr + &,
+  .hr + &,
+  .m-links-bar--filters + &,
+  .o-features + & {
+    margin-top: 0;
+
+    &::before {
+      content: none;
+      display: none;
+    }
+  }
+
+  & + .o-row-listing,
+  & + .m-no-results,
+  & + .m-results-title {
+    margin-top: 28px;
+
+    @include breakpoint('small+') {
+      margin-top: 36px;
+    }
+
+    @include breakpoint('medium+') {
+      margin-top: 40px;
+    }
+  }
+
+  & + .o-artist-bio {
+    margin-top: 36px;
+
+    @include breakpoint('small+') {
+      margin-top: 60px;
+    }
+
+    @include breakpoint('medium+') {
+      margin-top: 72px;
+    }
+  }
+}
+
+.m-title-bar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-color: $color__rules--quaternary;
+}
+
+// Simulates a thinner <hr/>, which is lighter, but taller
+.m-title-bar--light::before {
+  background-color: $color__rules--primary;
+}
+
+.m-title-bar .title {
+  flex: 0 0 auto;
+  margin-top: 0;
+  margin-right: auto;
+}
+
+.m-title-bar .f-list-3 {
+  padding: 25px 0;
+}
+
+.m-title-bar .title.f-module-title-2 {
+  @include tucked-margin-top($f-module-title-2, ('xsmall': 60, 'small+': 68, 'medium+': 80));
+}
+
+.m-title-bar.m-title-bar--compact .title.f-module-title-2 {
+  @include tucked-margin-top($f-module-title-2, ('xsmall': 32, 'small+': 40, 'medium+': 40));
+}
+
+.m-title-bar .title.f-numeral-date {
+  @include tucked-margin-top($f-numeral-date, ('xsmall': 60, 'small+': 68, 'medium+': 80));
+}
+
+.m-title-bar .title.f-display-1 {
+  @include tucked-margin-top($f-display-1, ('xsmall': 60, 'small+': 68, 'medium+': 80));
+}
+
+.m-title-bar__links {
+  display: none;
+  flex: 0 0 auto;
+  flex-flow: row wrap;
+  margin-top: 0;
+  margin-left: auto;
+
+  @include breakpoint('small+') {
+    display: flex;
+    margin-top: auto;
+    align-self: flex-end;
+  }
+}
+
+.m-title-bar__links li {
+  flex: 0 0 auto;
+  margin-left: 20px;
+}
+
+.m-title-bar__links a {
+  color: $color__link;
+
+  &:hover,
+  &:focus:hover {
+    color: $color__link--hover;
+  }
+
+  &:active:hover {
+    color: $color__link--active;
+  }
+}
+
+.m-title-bar__links span {
+  color: $color__text--secondary;
+}

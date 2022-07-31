@@ -1,0 +1,25 @@
+{
+    "id": 246554,
+    "api_model": "products",
+    "api_link": "https://api.artic.edu/api/v1/products/246554",
+    "title": "Claude Monet Stacks of Wheat (End of Day, Autumn) Matted Notecard",
+    "external_sku": 112215,
+    "image_url": "https://shop-images.imgix.net/112215_2.jpg",
+    "web_url": "https://shop.artic.edu/products/112215",
+    "description": "<p>Print developed from Claude Monet\u2019s <em>Claude Monet Stacks of Wheat (End of Day, Autumn)</em>, 1890-91, from the Art Institute of Chicago\u2019s collection.</p>\n<p>The monumental stacks that Claude Monet depicted in his series <em>Stacks of Wheat</em> rose fifteen to twenty feet and stood just outside the artist\u2019s farmhouse at Giverny. Through 1890 and 1891, he worked on this series both in the field, painting simultaneously at several easels, and in the studio, refining pictorial harmonies. The Art Institute has the largest group of Monet\u2019s <em>Stacks of Wheat</em> in the world.</p>\n<ul>\n<li>Print Reproduction</li>\n<li>Image Dimensions: 6.5 x 4.19 in</li>\n<li>Full Dimensions: 8 x 10 in. </li>\n<li>Materials: Premium cardstock</li>\n</ul>",
+    "price_display": "<p>$11.5</p>",
+    "min_compare_at_price": null,
+    "max_compare_at_price": null,
+    "min_current_price": 11.5,
+    "max_current_price": 11.5,
+    "artist_ids": [
+        35809
+    ],
+    "artwork_ids": [],
+    "exhibition_ids": [
+        9036
+    ],
+    "last_updated_source": "2022-06-17T00:00:00-05:00",
+    "last_updated": "2022-06-18T23:01:44-05:00",
+    "timestamp": "2022-06-19T01:47:36-05:00"
+}

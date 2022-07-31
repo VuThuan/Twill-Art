@@ -1,0 +1,252 @@
+
+.o-visit .m-links-bar {
+  margin-top: 0;
+}
+  .m-links-bar--title-bar-companion,
+  .o-visit .o-grid-listing + .m-links-bar--title-bar-companion,
+  .o-visit .m-link-list + .m-links-bar--title-bar-companion {
+    @include breakpoint('xsmall') {
+      margin-top: 24px;
+    }
+  }
+
+.o-visit .m-cta-banner {
+  margin-top: 0;
+
+  & + * {
+    margin-top: 0;
+  }
+
+  @include breakpoint('small+') {
+    margin-top: 0;
+
+    & + * {
+      margin-top: 0;
+    }
+  }
+
+  @include breakpoint('medium+') {
+    margin-top: 0;
+
+    & + * {
+      margin-top: 0;
+    }
+  }
+
+  + .m-title-bar {
+    margin-top: 0;
+  }
+}
+
+.o-visit hr {
+  border-top: 1px solid $color__rules--quaternary;
+}
+
+.o-visit .m-title-bar {
+  margin-top: 52px;
+
+  @include breakpoint('medium+') {
+    margin-top: 60px;
+  }
+
+  @include breakpoint('large+') {
+    margin-top: 72px;
+  }
+}
+
+.o-visit .m-ticket-actions {
+  display: flex;
+  flex-flow: column-reverse;
+
+  margin-top: 0;
+
+  @include breakpoint('small+') {
+    flex-flow: row-reverse nowrap;
+  }
+}
+
+.o-visit .m-ticket-actions__action {
+
+  @include breakpoint('small+') {
+    flex: 0 0 auto;
+    width: colspan(28, small);
+    margin-top: 0;
+  }
+
+  @include breakpoint('medium+') {
+    width: colspan(13, medium);
+  }
+
+  @include breakpoint('large+') {
+    width: colspan(13, large);
+  }
+
+  @include breakpoint('xlarge') {
+    width: colspan(13, xlarge);
+  }
+}
+
+.o-visit .m-ticket-actions__action:first-child {
+  margin-top: 12px;
+
+  @include breakpoint('small+') {
+    margin-top: 0;
+  }
+}
+
+.o-visit .m-ticket-actions__action:not(:first-child) {
+  @include breakpoint('small+') {
+    margin-right: colspan(2, small);
+  }
+
+  @include breakpoint('medium+') {
+    margin-right: colspan(2, medium);
+  }
+
+  @include breakpoint('large+') {
+    margin-right: colspan(2, large);
+  }
+
+  @include breakpoint('xlarge') {
+    margin-right: colspan(2, xlarge);
+  }
+}
+
+.o-visit .m-link-list {
+  margin-top: 24px;
+
+  @include breakpoint('small+') {
+    margin-top: 36px;
+  }
+
+  @include breakpoint('medium+') {
+    margin-top: 40px;
+  }
+
+  @include breakpoint('large+') {
+    margin-top: 44px;
+  }
+}
+
+.o-visit .m-link-list__item {
+  margin-top: 24px;
+  padding-top: 16px;
+}
+
+.o-visit .m-link-list__item:first-child {
+  margin-top: 0;
+}
+
+.o-visit-capacity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @each $name, $margin in (
+    'xsmall': 36,
+    'small+': 40,
+    'medium+': 52,
+  ) {
+    @include breakpoint('#{$name}') {
+      margin-top: #{$margin}px;
+    }
+  }
+
+  .o-visit-capacity__graph {
+    margin-bottom: 24px;
+
+    svg {
+      max-width: 100%;
+    }
+  }
+
+  .o-visit-capacity__text {
+    margin-bottom: 24px;
+    @include f-secondary;
+    @include untuck;
+
+    h2 {
+      @include f-list-3;
+      @include untuck;
+      margin-bottom: 12px;
+    }
+
+    a {
+      @include text-underline(1.02em, $color__rules--secondary);
+    }
+  }
+
+  .o-visit-capacity__actions {
+    width: 100%;
+
+    .btn {
+      margin-left: 0;
+
+      &:not(:first-child) {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  @include breakpoint('medium+') {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  @include breakpoint('medium') {
+    .o-visit-capacity__graph {
+      width: colspan(24, 'medium');
+      padding-right: colspan(2, 'medium');
+    }
+
+    .o-visit-capacity__text {
+      width: colspan(34, 'medium');
+    }
+  }
+
+  @include breakpoint('large+') {
+    .o-visit-capacity__graph {
+      margin-bottom: 0;
+    }
+
+    .o-visit-capacity__graph {
+      margin-bottom: 0;
+    }
+  }
+
+  @each $name in ('large', 'xlarge') {
+    @include breakpoint('#{$name}') {
+      .o-visit-capacity__graph {
+        padding-right: colspan(2, $name);
+      }
+
+      .o-visit-capacity__text {
+        padding-right: colspan(2, $name);
+      }
+
+      .o-visit-capacity__actions {
+        width: colspan(16, $name);
+      }
+    }
+  }
+
+  @include breakpoint('large') {
+    .o-visit-capacity__graph {
+      width: colspan(20, 'large');
+    }
+
+    .o-visit-capacity__text {
+      width: colspan(22, 'large');
+    }
+  }
+
+  @include breakpoint('xlarge') {
+    .o-visit-capacity__graph {
+      width: colspan(18, 'xlarge');
+    }
+
+    .o-visit-capacity__text {
+      width: colspan(24, 'xlarge');
+    }
+  }
+}

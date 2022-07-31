@@ -1,0 +1,230 @@
+.g-header {
+  position: fixed;
+  z-index: map-get($zindexs, 'header');
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  background-clip: padding-box;
+  background-color: rgba($color__white,.97);
+  transition: opacity .2s, transform 0s 0s;
+
+  // Mirror html style for alignment
+  margin-right: -50vw;
+  margin-left: -50vw;
+  left: 50%;
+  right: 50%;
+
+  @supports (backdrop-filter: blur(5px)) or (-webkit-backdrop-filter: blur(5px)) {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+}
+
+.g-header__inner {
+  @extend %container;
+  position: relative;
+  height: 112px;
+  border-bottom: 1px solid $color__rules--primary;
+
+  @include breakpoint('small+') {
+    height: 128px;
+  }
+
+  @include breakpoint('medium+') {
+    height: 140px;
+  }
+}
+
+.g-header__logo {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  width: 80px;
+  height: 80px;
+  color: $color__black--54;
+
+  @include breakpoint('small+') {
+    top: 20px;
+    width: 88px;
+    height: 88px;
+  }
+
+  @include breakpoint('medium+') {
+    top: 24px;
+    width: 92px;
+    height: 92px;
+  }
+}
+
+.g-header__logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.g-header__logo use {
+  display: none;
+
+  &:nth-child(1) {
+    display: block;
+
+    @include breakpoint('small+') {
+      display: none;
+    }
+  }
+
+  &:nth-child(2) {
+    @include breakpoint('small+') {
+      display: block;
+    }
+
+    @include breakpoint('medium+') {
+      display: none;
+    }
+  }
+
+  &:nth-child(3) {
+    @include breakpoint('medium+') {
+      display: block;
+    }
+  }
+}
+
+.g-header__opening-hours {
+  display: none;
+  position: absolute;
+  left: 120px;
+  top: 12px;
+  margin-top: 0;
+  color: $color__text--secondary;
+
+  @include breakpoint('medium+') {
+    display: block;
+  }
+}
+
+.g-header nav ul {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 0;
+}
+
+.g-header nav li {
+  flex: 0 0 auto;
+  margin-left: 28px;
+}
+
+.g-header__nav-primary {
+  position: absolute;
+  right: 0;
+  bottom: 13px;
+
+  @include breakpoint('small+') {
+    bottom: 20px;
+  }
+}
+
+.g-header__nav-primary a,
+.g-header__nav-primary button {
+  color: $color__text--secondary;
+
+  @include breakpoint('small+') {
+    color: $color__text--title;
+  }
+}
+
+.g-header__nav-primary a:hover {
+  @include text-underline(1.12em, $color__text--title);
+}
+
+.g-header__nav-primary a:active {
+  background-image: none;
+  text-shadow: 0;
+}
+
+.g-header__nav-primary button {
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  background-color: transparent;
+  vertical-align: text-bottom;
+  cursor: pointer;
+}
+
+.g-header__nav-primary .s-current a {
+  color: $color__link--accent;
+
+  &:hover {
+    @include text-underline(1.12em, $color__link--accent);
+  }
+
+  &:active {
+    background-image: none;
+    text-shadow: 0;
+  }
+}
+
+.g-header__nav-primary svg {
+  position: relative;
+  top: -1px;
+}
+
+.g-header__nav-secondary {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 20px;
+
+  @include breakpoint('small+') {
+    display: block;
+  }
+}
+
+.g-header__opening-hours a,
+.g-header__nav-secondary a {
+  color: $color__text--secondary;
+}
+
+.g-header__opening-hours a,
+.g-header__nav-secondary a {
+  &:hover,
+  &:focus:hover {
+    @include text-underline(1.02em, $color__text--secondary);
+  }
+
+  &:active {
+    @include text-underline(1.02em, transparent);
+  }
+}
+
+.g-header__menu-link {
+  @include untuck;
+  position: absolute;
+  right: 0;
+  top: 15px;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  background-color: transparent;
+  color: $color__text--title;
+  cursor: pointer;
+
+  @include breakpoint('small+') {
+    display: none;
+  }
+
+  &:hover,
+  &:focus:hover {
+    color: $color__text;
+  }
+
+  &:active:hover {
+    color: $color__text--secondary;
+  }
+}
+
+.g-header__menu-link svg {
+  position: relative;
+  top: -1px;
+  margin-left: 4px;
+}

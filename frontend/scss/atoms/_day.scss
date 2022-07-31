@@ -1,0 +1,87 @@
+/***
+
+day
+==========
+
+```
+<h3 class="day">
+  <span class="day__date f-numeral-date">17</span>
+  <span class="day__month f-tag">Oct</span>
+  <span class="day__day f-tag">Tue</span>
+</h3>
+```
+
+***/
+/*
+
+##### PHP include
+
+views/components/atoms/day.blade.php
+
+Variable | Purpose | Required?
+--- | --- | ---
+$tag | HTML tag of the element is selectable | No, defaults to `h3`
+$variation | variation (CSS class) | No
+$date | Date | Yes
+$month | Month | Yes
+$day | Day | Yes
+
+Demonstrated in **statics/toybox**
+
+Example usage:
+
+```
+<code><pre>@component('components.atoms._day')
+    @slot('date', DateHelpers::printDate($date))
+    @slot('month', DateHelpers::printMonth($date))
+    @slot('day', DateHelpers::printDay($date))
+@endcomponent</code></pre>
+```
+
+***/
+
+.day {
+  position: relative;
+  padding-top: .02px;
+  padding-bottom: .02px;
+  font-weight: normal;
+  overflow: visible;
+}
+
+.day::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 72px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: $color__rules--tertiary;
+}
+
+.day__date {
+  display: block;
+  width: 50px;
+  color: $color__text--title;
+  text-align: right;
+}
+
+.day__date.f-numeral-date {
+  @include tucked-margin-top($f-numeral-date, ('xsmall': 48, 'small+': 52));
+}
+
+.day__month {
+  bottom: 4px;
+  color: $color__text--title;
+}
+
+.day__day {
+  bottom: 21px;
+  color: $color__text--secondary;
+}
+
+.day__month,
+.day__day {
+  position: absolute;
+  left: 92px;
+}

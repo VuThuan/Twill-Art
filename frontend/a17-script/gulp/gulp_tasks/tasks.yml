@@ -1,0 +1,15 @@
+---
+default:
+  - 'build'
+  - 'watch'
+
+build:
+  - 'clean'
+  - 'triggerBuild'
+
+buildComponents:
+  - 'images'
+  - 'icons'
+  - 'styles'
+  - 'scripts'
+  - 'rev'

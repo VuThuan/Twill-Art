@@ -1,0 +1,701 @@
+@use "sass:math";
+
+.o-gallery {
+  @include background-fill;
+  padding-top: .02px;
+  background-color: $color__bg--gallery;
+  color: $color__text--contrast;
+  transform: translateZ(0);
+
+  margin-top: 48px;
+
+  @include breakpoint('small+') {
+    margin-top: 60px;
+  }
+
+  @include breakpoint('large+') {
+    margin-top: 72px;
+  }
+}
+
+.o-gallery__title {
+  @include untuck();
+
+  @include breakpoint('xlarge') {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+.o-gallery__title + ul.o-pinboard {
+  margin-top: 24px;
+}
+
+.o-gallery__caption {
+  position: relative;
+  margin-top: 32px;
+
+  @include breakpoint('small+') {
+    margin-top: 36px;
+  }
+
+  @include breakpoint('medium+') {
+    margin-top: 40px;
+  }
+}
+
+.o-gallery__media {
+  position: relative;
+  margin-top: 40px;
+}
+
+.o-gallery__title,
+.o-gallery figcaption,
+.o-gallery .m-media figcaption .f-caption-title {
+  color: $color__text--title-contrast;
+}
+
+.o-gallery .m-media figcaption a {
+  color: $color__text--title-contrast;
+}
+
+.o-gallery .m-media figcaption a:hover,
+.o-gallery .m-media a.m-media__img:hover + figcaption a {
+  @include text-underline(1.05em, $color__text--title-contrast, $color__bg--gallery);
+}
+
+.o-gallery .m-media figcaption a:active {
+  background-image: none;
+  color: $color__text--title-contrast;
+  text-shadow: 0;
+}
+
+.o-gallery .m-media figcaption .f-caption p {
+  margin-bottom: 12px;
+}
+
+.o-gallery hr,
+.o-gallery .hr {
+  margin-top: 0;
+  border-top-color: $color__rules--contrast;
+}
+
+.o-gallery__all-link {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 44px;
+  margin-top: 0;
+
+  @include breakpoint('medium+') {
+    display: block;
+  }
+}
+
+.o-gallery__all-link-btn {
+  margin-top: 0;
+  padding-bottom: 32px;
+
+  @include breakpoint('medium+') {
+    display: none;
+  }
+}
+
+.o-gallery__all-link-btn .btn {
+  display: block;
+  width: 100%;
+}
+
+.o-gallery__share {
+  display: block;
+  margin-top: 20px;
+
+  @include breakpoint('small+') {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    margin-top: 0;
+  }
+
+  @include breakpoint('xlarge') {
+    position: static;
+    margin-top: 24px;
+  }
+}
+
+
+.o-gallery .m-media__img {
+  background: transparent;
+}
+
+
+.o-gallery__title.f-module-title-2 {
+  @include tucked-margin-top($f-module-title-2, ('xsmall': 56, 'small+': 68, 'medium+': 80));
+}
+
+.o-gallery__caption .f-caption {
+  @include untuck();
+  margin-top: 24px;
+}
+
+
+.o-gallery--mosaic {
+  .o-gallery__media,
+  .o-gallery__title,
+  .o-gallery__caption {
+    @include breakpoint('large+') {
+      margin-left: colspan(6, large);
+      margin-right: colspan(6, large);
+
+      column-gap: colspan(1, large);
+      width: colspan(46, large);
+    }
+
+    @include breakpoint('xlarge') {
+      margin-left: colspan(6, xlarge);
+      margin-right: colspan(6, xlarge);
+
+      column-gap: colspan(1, xlarge);
+      width: colspan(46, xlarge);
+    }
+  }
+
+  .o-gallery__title,
+  .o-gallery__caption {
+    width: colspan(58, xsmall);
+
+    @include breakpoint('small+') {
+      width: colspan(46, small);
+    }
+
+    @include breakpoint('medium+') {
+      width: colspan(36, medium);
+    }
+
+    @include breakpoint('large+') {
+      width: colspan(36, large);
+    }
+
+    @include breakpoint('xlarge') {
+      width: colspan(36, xlarge);
+    }
+  }
+
+  .o-gallery__media {
+    padding-bottom: 56px;
+
+    @include breakpoint('small+') {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 64px - 48px;
+    }
+
+    @include breakpoint('medium+') {
+      padding-bottom: 84px - 48px;
+      column-gap: colspan(2, medium);
+    }
+  }
+
+  .o-gallery__media > * {
+    margin-top: 48px;
+
+    @include breakpoint('small+') {
+      left: 0;
+      top: 0;
+      flex: 0 0 auto;
+      width: colspan(28, small);
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    @include breakpoint('medium+') {
+      width: colspan(28, medium);
+    }
+
+    @include breakpoint('large+') {
+      width: colspan(22, large);
+    }
+
+    @include breakpoint('xlarge') {
+      width: colspan(22, xlarge);
+    }
+  }
+
+  .o-gallery__media > *.s-positioned {
+    position: absolute;
+    z-index: 1;
+    flex: none;
+    opacity: 1;
+    transition: opacity .25s, top .3s $bezier--marius-mosaic, left .3s $bezier--marius-mosaic, height .3s $bezier--marius-mosaic;
+  }
+
+  .o-gallery__media > *.s-positioned:not(.s-repositioning) {
+    margin-top: 0;
+  }
+
+  .o-gallery__media > *:nth-child(1) { transition-delay: .1s; }
+  .o-gallery__media > *:nth-child(2) { transition-delay: .2s; }
+  .o-gallery__media > *:nth-child(3) { transition-delay: .3s; }
+  .o-gallery__media > *:nth-child(4) { transition-delay: .4s; }
+  .o-gallery__media > *:nth-child(5) { transition-delay: .5s; }
+  .o-gallery__media > *:nth-child(6) { transition-delay: .6s; }
+  .o-gallery__media > *:nth-child(7) { transition-delay: .7s; }
+  .o-gallery__media > *:nth-child(7) ~ * { transition-delay: .8s; }
+
+  .m-media__img img {
+    max-height: #{math.div(colspan(58, xsmall) * 4, 3)};
+    object-fit: contain;
+
+    @include breakpoint('small+') {
+      max-height: #{math.div(colspan(28, small) * 4, 3)};
+    }
+
+    @include breakpoint('medium+') {
+      max-height: #{math.div(colspan(28, medium) * 4, 3)};
+    }
+
+    @include breakpoint('large+') {
+      max-height: #{math.div(colspan(22, large) * 4, 3)};
+    }
+
+    @include breakpoint('xlarge') {
+      max-height: #{math.div(colspan(22, xlarge) * 4, 3)};
+    }
+  }
+
+  .m-media--artwork .m-media__img img {
+    width: 100%;
+    max-width: 843px;
+  }
+
+  .o-gallery__all-link-btn {
+    margin-top: -28px;
+
+    @include breakpoint('small+') {
+      margin-top: -32px;
+    }
+  }
+}
+
+
+.o-gallery--slider {
+  padding-bottom: .02px;
+
+  .o-gallery__title,
+  .o-gallery__caption {
+    width: colspan(58, xsmall);
+
+    @include breakpoint('small+') {
+      width: colspan(46, small);
+    }
+
+    @include breakpoint('medium+') {
+      width: colspan(36, medium);
+    }
+
+    @include breakpoint('large+') {
+      width: colspan(36, large);
+    }
+
+    @include breakpoint('xlarge') {
+      width: colspan(36, xlarge);
+    }
+  }
+
+  .o-gallery--slider__controls {
+    user-select: none;
+
+    .arrow-link svg {
+      transform: scale(2);
+    }
+
+    .arrow-link--back svg {
+      transform: scale(2) rotate(180deg);
+    }
+
+    @include breakpoint('xsmall') {
+      position: relative;
+      margin-top: 32px;
+      margin-left: -36px;
+    }
+
+    @include breakpoint('small+') {
+      position: absolute;
+      right: 0;
+      top: 32px;
+      margin-left: 0;
+      margin-right: -36px;
+    }
+
+    @include breakpoint('medium+') {
+      top: 46px;
+    }
+
+    .btn {
+      color: $color__text--title-contrast;
+    }
+  }
+
+  &.o-gallery----theme-2 {
+    .o-gallery--slider__controls {
+      .btn {
+        color: $color__text--title;
+      }
+    }
+  }
+
+  &.o-gallery----headerless {
+    .o-gallery--slider__controls {
+      margin-bottom: 32px;
+
+      @include breakpoint('small+') {
+        position: relative;
+        margin-left: -36px;
+        margin-right: 0;
+      }
+    }
+
+    .o-gallery__media-wrapper {
+      @include breakpoint('xlarge') {
+        width: auto;
+      }
+    }
+  }
+
+  .o-gallery__media-wrapper {
+    margin-right: colspan(3, xsmall, 0, true);
+    margin-bottom: 24px;
+    padding-bottom: 32px;
+
+    overflow: hidden;
+
+    // Allow more space for the navigation arrows
+    padding-top: 32px;
+
+    @include breakpoint('small+') {
+      padding-top: 55px;
+    }
+
+    @include breakpoint('small+') {
+      margin-right: colspan(3, small, 0, true);
+      margin-bottom: 32px;
+    }
+
+    @include breakpoint('medium+') {
+      margin-right: colspan(3, medium, 0, true);
+      margin-bottom: 52px;
+    }
+
+    @include breakpoint('large+') {
+      margin-right: colspan(3, large, 0, true);
+    }
+
+    @include breakpoint('xlarge') {
+      margin-right: colspan(3, xlarge, 0, true);
+    }
+  }
+
+  .o-gallery__media {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    // Matches the wrapper's padding-bottom to hide scrollbar
+    margin-bottom: -(32px + 20px);
+    padding-bottom: 32px + 20px;
+
+    // Avoid double-spacing navigation arrows
+    margin-top: 0px;
+
+    &::after {
+      content: '';
+      display: block;
+      flex: 0 0 auto;
+      width: colspan(1, xsmall);
+      height: 1px;
+
+      @include breakpoint('small+') {
+        width: colspan(1, small);
+      }
+
+      @include breakpoint('medium+') {
+        width: colspan(1, medium);
+      }
+
+      @include breakpoint('large+') {
+        width: colspan(1, large);
+      }
+
+      @include breakpoint('xlarge') {
+        //width: calc((100vw - #{map-get($main-col-widths, xlarge)}) / 2);
+        width: colspan(1, xlarge);
+      }
+    }
+  }
+
+  .o-gallery__media > * {
+    flex: 0 0 auto;
+    margin-top: 0;
+    margin-left: colspan(2, xsmall);
+
+    &:first-child {
+      margin-left: 0;
+
+      @include breakpoint('small+') {
+        margin-left: 0;
+      }
+
+      @include breakpoint('medium+') {
+        margin-left: 0;
+      }
+
+      @include breakpoint('large+') {
+        margin-left: 0;
+      }
+    }
+
+    @include breakpoint('small+') {
+      margin-left: colspan(1, small);
+    }
+
+    @include breakpoint('medium+') {
+      margin-left: colspan(1, medium);
+    }
+
+    @include breakpoint('large+') {
+      margin-left: colspan(1, large);
+    }
+
+    @include breakpoint('xlarge') {
+      max-width: colspan(18, xlarge);
+      margin-left: colspan(1, xlarge);
+    }
+  }
+
+  figcaption {
+    @each $name, $point in $breakpoints {
+      @include breakpoint('#{$name}') {
+        max-width: colspan(map-get((
+          xsmall: 48,
+          small: 36,
+          medium: 24,
+          large: 24,
+          xlarge: 18
+        ), $name), $name);
+      }
+    }
+  }
+
+  .m-media__img:not(.m-media__img--video) img {
+    width: auto;
+    min-width: 200px;
+    max-width: 600px;
+    max-height: 400px;
+    object-fit: contain;
+    object-position: left top;
+    margin: initial;
+
+    @include breakpoint('small+') {
+      max-height: 480px;
+    }
+
+    @include breakpoint('medium+') {
+      max-height: 420px;
+    }
+
+    @include breakpoint('large+') {
+      max-height: 480px;
+    }
+
+    @include breakpoint('xlarge') {
+      width: 100%;
+      max-width: unset;
+      max-height: #{math.div(colspan(18, xlarge) * 4, 3)};
+    }
+  }
+
+  $mediaColWidth: (
+    xsmall: 50,
+    small: 26,
+    medium: 18,
+    large: 18,
+    xlarge: 18
+  );
+
+  .o-gallery__media [data-type="embed"],
+  .o-gallery__media .m-media--video,
+  .o-gallery__media .m-media--soundcloud {
+    flex: 0 0 auto;
+
+    @each $name, $point in $breakpoints {
+      @include breakpoint('#{$name}') {
+        width: colspan(map-get($mediaColWidth, $name), $name);
+      }
+    }
+  }
+
+  .m-media__img--video {
+    + figcaption {
+      padding-right: 0;
+    }
+
+    &,
+    img,
+    video,
+    embed,
+    iframe,
+    object {
+      width: 100%;
+      min-width: none;
+
+      @each $name, $point in $breakpoints {
+        @include breakpoint('#{$name}') {
+          height: math.div(colspan(map-get($mediaColWidth, $name), $name) * 9, 16);
+          max-height: none;
+        }
+      }
+    }
+  }
+
+  .m-media--soundcloud .m-media__img--video,
+  .m-media--soundcloud .m-media__img--video img,
+  .m-media--soundcloud .m-media__img--video iframe {
+    height: math.div(colspan(50, xsmall) * 2, 9);
+
+    @include breakpoint('small+') {
+      height: math.div(colspan(35, small) * 2, 9);
+    }
+
+    @include breakpoint('medium+') {
+      height: math.div(colspan(23, medium) * 2, 9);
+    }
+
+    @include breakpoint('large+') {
+      height: math.div(colspan(23, large) * 2, 9);
+    }
+
+    @include breakpoint('xlarge') {
+      height: #{math.div(colspan(18, xlarge) * 2, 9)};
+    }
+  }
+
+  .o-gallery__all-link-btn {
+    margin-top: -24px;
+
+    @include breakpoint('small+') {
+      margin-top: -32px;
+    }
+  }
+}
+
+/**
+ *  Themes for dark/light variations. Dark is default.
+ */
+.o-gallery.o-gallery----theme-2,
+.o-gallery.o-gallery----theme-3 {
+  background-color: $color__bg--primary;
+  color: $color__text;
+
+  .o-gallery__title,
+  figcaption strong,
+  .m-media figcaption .f-caption-title {
+    color: $color__text--title;
+  }
+
+  .m-media figcaption a {
+    color: $color__text--accent;
+  }
+
+  .m-media figcaption a:hover,
+  .m-media a.m-media__img:hover + figcaption a {
+    @include text-underline(1.05em, $color__text--title, $color__bg--primary);
+  }
+
+  .m-media figcaption a:active {
+    background-image: none;
+    color: $color__text--title;
+    text-shadow: 0;
+  }
+
+  hr,
+  .hr {
+    border-top-color: $color__rules--secondary;
+  }
+}
+
+.o-gallery.o-gallery----theme-3 {
+  background: $color__bg;
+}
+/**
+ *  For the artist carousel on the homepage.
+ */
+.o-gallery--artist {
+  a:hover,
+  a:focus {
+    .m-media__img img {
+      opacity: 0.9;
+    }
+  }
+  .m-media {
+    position: relative;
+    .m-media__img {
+      background-color: $color__black;
+      img {
+        opacity: 0.8;
+        transition: opacity .20s;
+      }
+    }
+    figcaption {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% - 40px);
+      transform: translateY(-50%) translateX(-50%);
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      z-index: 2;
+      .f-caption-title {
+        display: block;
+      }
+      .f-caption, .f-caption-title div {
+        color: white;
+        text-shadow: 0 0 6px rgba($color__black, .5);
+        display: block;
+        margin-bottom: 20px;
+        @include breakpoint('medium+') {
+          margin-bottom: 15px;
+        }
+        @include untuck;
+        @include font-styles-untuck(generate-font-obj(
+          (
+            font-family: $serif-font,
+            font-family-loaded: $serif-font--loaded,
+            font-loaded-class: $serif-font-loaded-class,
+            settings: (
+              'xsmall': (font-size: 17, line-height: 21, text-transform: 'uppercase', letter-spacing: 0.1em, push: 0),
+              'small+': (font-size: 17, line-height: 21, push: -2),
+              'medium+': (font-size: 20, line-height: 26, push: -1),
+            )
+          )
+        ));
+        font-feature-settings: 'lnum' on;
+      }
+    }
+  }
+}
+
+.o-gallery--small-mosaic .o-gallery__caption .f-caption {
+  margin-bottom: 32px;
+
+  @include breakpoint('small+') {
+    margin-bottom: 36px;
+  }
+
+  @include breakpoint('medium+') {
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,62 @@
+/***
+
+return-link
+=============
+
+Used in article references, demo'd inside a list:
+
+```
+<ol class="list f-secondary">
+  <li id="ref_note-1">
+    <a class="return-link" href="#ref_cite-1"><svg class="icon--return" aria-label="back to reference"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon--return"></use></svg></a>
+  </li>
+</ol>
+```
+
+***/
+
+.return-link {
+  position: relative;
+  color: $color__blue;
+
+  &:hover,
+  &:focus:hover {
+    color: $color__blue--hover;
+  }
+
+  &:active:hover {
+    color: $color__blue--active;
+  }
+
+  .o-blocks >.f-secondary & {
+    background: none;
+  }
+
+  svg {
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+}
+
+.return-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.o-article--editorial .return-link {
+  color: $color__link--editorial;
+
+  &:hover,
+  &:focus:hover {
+    color: $color__link--editorial-hover;
+  }
+
+  &:active:hover {
+    color: $color__link--editorial-active;
+  }
+}

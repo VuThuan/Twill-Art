@@ -1,0 +1,16 @@
+/***
+
+short-description
+=================
+
+Sets color of short description text
+
+```
+<span class="short-description f-secondary">Labore quia nihil ratione pariatur. Commodi accusantium quia omnis cupiditate molestiae excepturi laudantium. Occaecati veritatis corporis aspernatur sequi amet.</span>
+```
+
+***/
+
+.short-description {
+  color: $color__text--secondary;
+}

@@ -1,0 +1,338 @@
+/***
+
+dropdown
+==========
+
+```
+<span aria-label="Filter by" class="dropdown" data-behavior="dropdown" tabindex="0">
+  <h2 class="dropdown__trigger"><button class="f-secondary">Dropdown<svg class="icon--arrow"><use xlink:href="#icon--arrow"></use></svg></button></h2>
+  <ul class="dropdown__list f-secondary" data-dropdown-list="" tabindex="-1">
+      <li><a href="#">Option 1</a></li>
+      <li><a href="http://www.google.com/">Option 2</a></li>
+      <li><a href="#">Option 3</a></li>
+      <li><a href="#">Option 4</a></li>
+      <li><a href="#">Option 5</a></li>
+      <li><a href="#">Option 6</a></li>
+      <li><a href="#">Option 7</a></li>
+      <li><a href="#">Option 8</a></li>
+      <li><a href="#">Option 9</a></li>
+      <li><a href="#">Option 10</a></li>
+  </ul>
+</span>
+```
+***/
+/***
+
+If the drop down is in a `m-links-bar` then add variation `dropdown--filter`:
+
+```
+<span aria-label="Filter by" class="dropdown dropdown--filter" data-behavior="dropdown" tabindex="0">
+  <h2 class="dropdown__trigger"><button class="f-secondary">Dropdown<svg class="icon--arrow"><use xlink:href="#icon--arrow"></use></svg></button></h2>
+  <ul class="dropdown__list f-secondary" data-dropdown-list="" tabindex="-1">
+      <li><a href="#">Option 1</a></li>
+      <li><a href="http://www.google.com/">Option 2</a></li>
+      <li><a href="#">Option 3</a></li>
+      <li><a href="#">Option 4</a></li>
+      <li><a href="#">Option 5</a></li>
+      <li><a href="#">Option 6</a></li>
+      <li><a href="#">Option 7</a></li>
+      <li><a href="#">Option 8</a></li>
+      <li><a href="#">Option 9</a></li>
+      <li><a href="#">Option 10</a></li>
+  </ul>
+</span>
+```
+
+***/
+/*
+
+##### PHP include
+
+views/components/atoms/dropdown.blade.php
+
+Demonstrated in **statics/toybox**
+
+```
+<pre><code>@component('components.atoms._dropdown')
+  @slot('prompt', 'Dropdown')
+  @slot('ariaTitle', 'Filter by')
+  @slot('options', array(array('href' => '#', 'label' => 'Option 1'), array('href' => 'http://www.google.com/', 'label' => 'Option 2'), array('href' => '#', 'label' => 'Option 3'), array('href' => '#', 'label' => 'Option 4'), array('href' => '#', 'label' => 'Option 5'), array('href' => '#', 'label' => 'Option 6'), array('href' => '#', 'label' => 'Option 7'), array('href' => '#', 'label' => 'Option 8'), array('href' => '#', 'label' => 'Option 9'), array('href' => '#', 'label' => 'Option 10')))
+@endcomponent</code></pre>
+```
+
+**/
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown__trigger {
+  display: block;
+  position: relative;
+  min-width: 180px;
+  height: 48px;
+  padding-right: 68px;
+  padding-left: 15px;
+  border: 1px solid $color__input-border;
+  background: none;
+  color: $color__input-text;
+  text-align: left;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.dropdown__trigger[class*=f-] {
+  @include untuck;
+}
+
+.dropdown__trigger .button {
+  border: 0;
+  background-color: initial;
+  cursor: pointer;
+  padding: 0;
+}
+
+// For Exhibition and Events on mobile breakpoints
+.dropdown--tabs .dropdown__trigger .button.f-module-title-2 {
+  padding: 20px 0;
+}
+
+.dropdown.s-active .dropdown__trigger::before {
+  content: '' !important;
+  display: block !important;
+  position: fixed;
+  z-index: map-get($zindexs, 'dropdown');
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(255,255,255,0);
+}
+
+.dropdown__trigger.f-secondary,
+.dropdown__trigger.f-link {
+  padding-top: 11px;
+  padding-bottom: 9px;
+
+  @include breakpoint('large+') {
+    padding-top: 7px;
+    padding-bottom: 15px;
+  }
+}
+
+.dropdown__trigger:hover {
+  border-color: $color__input-border--hover;
+  color: $color__input-text--hover;
+}
+
+.dropdown__trigger:focus,
+.dropdown__trigger:active {
+  border-color: $color__input-border--focus;
+  color: $color__input-text--focus;
+}
+
+.dropdown__trigger > .icon--arrow {
+  // position: absolute;
+  // right: 16px;
+  // top: 50%;
+  margin-top: -3px;
+  margin-left: 5px;
+  transform: rotate(90deg);
+  transform-origin: 8px 8px;
+}
+
+.dropdown.s-active .dropdown__trigger > .icon--arrow {
+  transform: rotate(90deg) scaleX(-1);
+}
+
+.dropdown__trigger .f-module-title-2::before {
+  padding-top: 16px;
+}
+
+.dropdown__trigger .f-module-title-2::after {
+  margin-bottom: 16px;
+}
+
+.dropdown__list {
+  @include untuck;
+  @extend %styled-scrollbars;
+  display: none;
+  position: absolute;
+  z-index: map-get($zindexs, 'dropdown');
+  left: 0;
+  top: 100%;
+  min-width: 100%;
+  max-height: 80vh;
+  margin-top: 0;
+  background-color: $color__white;
+  box-shadow: $shadow;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  .dropdown.s-active & {
+    display: block;
+  }
+
+  .m-links-bar__item & {
+    top: calc(100% + 13px);
+
+    @include breakpoint('small+') {
+      top: 0;
+    }
+  }
+
+  .m-links-bar__items-secondary &,
+  .m-links-bar__item--overflow & {
+    left: auto;
+    right: 0;
+    width: colspan(58,'xsmall');
+
+    @include breakpoint('small+') {
+      width: auto;
+      max-width: colspan(58,'small');
+    }
+
+    @include breakpoint('medium+') {
+      max-width: colspan(58,'medium');
+    }
+
+    @include breakpoint('large+') {
+      max-width: colspan(58,'large');
+    }
+
+    @include breakpoint('xlarge') {
+      max-width: colspan(58,'xlarge');
+    }
+  }
+
+  .m-links-bar--tabs .m-links-bar__item--overflow & {
+    left: auto;
+    right: 0;
+    top: calc(100% - 1px);
+    width: colspan(58,'xsmall');
+
+    @include breakpoint('small+') {
+      width: colspan(58,'small');
+    }
+
+    @include breakpoint('medium+') {
+      width: colspan(58,'medium');
+    }
+
+    @include breakpoint('large+') {
+      width: colspan(58,'large');
+    }
+
+    @include breakpoint('xlarge') {
+      width: colspan(58,'xlarge');
+    }
+  }
+
+  .m-links-bar__secondary-split .m-links-bar__item & {
+    @include breakpoint('small') {
+      left: 0;
+      right: auto;
+    }
+  }
+}
+
+
+.dropdown__list > li:not(:first-child) {
+  border-top: 1px solid $color__rules--tertiary;
+}
+
+.dropdown__list > li.s-hidden {
+  display: none;
+}
+
+.dropdown__list a:not([class]) {
+  display: block;
+  padding: 10px 16px;
+  background-color: $color__white;
+  color: $color__text--secondary;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.dropdown__list.f-secondary a:not([class]) {
+  padding-top: 11px;
+  padding-bottom: 12px;
+
+  @include breakpoint('large+') {
+    padding-top: 8px;
+    padding-bottom: 11px;
+  }
+}
+
+.dropdown__list a:not([class]):hover {
+  background-color: $color__bg--secondary;
+  color: $color__text--title;
+}
+
+.dropdown__list a:not([class]):active {
+  background-color: $color__bg--primary;
+  color: $color__text--title;
+}
+
+.dropdown__list .s-active a:not([class]) {
+  background-color: $color__black--90;
+  color: $color__text--title-contrast;
+}
+
+
+// variation `dropdown--filter`
+
+.dropdown--filter .dropdown__trigger {
+  min-width: 0;
+  height: auto;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  border: 0 none;
+  border-radius: 0;
+  color: $color__link;
+
+  margin-right: 24px;
+}
+
+.m-links-bar__item:last-child .dropdown--filter .dropdown__trigger {
+  margin-right: 0px;
+}
+
+.dropdown--filter .dropdown__trigger .button::before {
+  padding-top: 0;
+}
+
+.dropdown--filter .dropdown__trigger .button::after {
+  margin-bottom: 0;
+}
+
+.o-article__primary-actions .dropdown--filter .dropdown__trigger.f-secondary,
+.o-article__primary-actions .dropdown--filter .dropdown__trigger.f-link {
+  padding-top: 11px;
+  padding-bottom: 9px;
+
+  @include breakpoint('large+') {
+    padding-top: 7px;
+    padding-bottom: 15px;
+  }
+}
+
+.dropdown--filter .dropdown__trigger:hover {
+  color: $color__link--hover;
+}
+
+.dropdown--filter .dropdown__trigger:active {
+  color: $color__link--active;
+}
+
+.dropdown--filter .dropdown__trigger > .icon--arrow {
+  // right: 0;
+}

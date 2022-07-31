@@ -1,0 +1,171 @@
+/***
+
+quote
+==========
+
+```
+<blockquote class="quote">
+    <p class="f-quote">Similique libero ad recusandae porro quia natus. Tenetur quia praesentium ex vitae praesentium et aut. Laboriosam maiores similique minima necessitatibus. Quisquam ratione qui laudantium et facere. Est placeat dolore libero aliquid quaerat. Ad ipsa libero deleniti iusto non temporibus ullam.</p>
+    <svg class="quote__icon" aria-hidden="true">
+        <use xlink:href="#icon--quote--48"></use>
+        <use xlink:href="#icon--quote--68"></use>
+        <use xlink:href="#icon--quote--76"></use>
+    </svg>
+</blockquote>
+```
+
+***/
+/***
+
+Has a variant for editorial articles:
+
+```
+<blockquote class="quote quote--editorial">
+    <p class="f-quote">Similique libero ad recusandae porro quia natus. Tenetur quia praesentium ex vitae praesentium et aut. Laboriosam maiores similique minima necessitatibus. Quisquam ratione qui laudantium et facere. Est placeat dolore libero aliquid quaerat. Ad ipsa libero deleniti iusto non temporibus ullam.</p>
+    <svg class="quote__icon" aria-hidden="true">
+        <use xlink:href="#icon--quote--48"></use>
+        <use xlink:href="#icon--quote--68"></use>
+        <use xlink:href="#icon--quote--76"></use>
+    </svg>
+</blockquote>
+```
+
+***/
+
+.quote {
+  position: relative;
+  padding-top: 56px;
+  padding-bottom: 0.02px;
+  color: $color__text--title;
+
+  @include breakpoint('small+') {
+    padding-top: 68px;
+  }
+
+  @include breakpoint('medium+') {
+    padding-top: 80px;
+  }
+
+  &.o-blocks__block {
+    padding-bottom: 20px;
+  }
+}
+
+.quote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-color: $color__rules--primary;
+}
+
+.quote cite {
+  @include tucked-margin-top($f-secondary, ('xsmall': 40, 'medium': 56));
+  display: block;
+}
+
+.quote__icon {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  width: 48px;
+  height: 29px;
+  color: $color__text--accent;
+  transform: rotate(180deg);
+  transform-origin: 24px 14.5px;
+
+  @include breakpoint('small+') {
+    width: 68px;
+    height: 40px;
+    transform-origin: 34px 20px;
+  }
+
+  @include breakpoint('medium+') {
+    top: 20px;
+    width: 76px;
+    height: 44px;
+    transform-origin: 38px 22px;
+  }
+}
+
+.quote__icon *:nth-child(1) {
+  @include breakpoint('small+') {
+    display: none;
+  }
+}
+
+.quote__icon *:nth-child(2) {
+  display: none;
+
+  @include breakpoint('small+') {
+    display: block;
+  }
+
+  @include breakpoint('medium+') {
+    display: none;
+  }
+}
+
+.quote__icon *:nth-child(3) {
+  display: none;
+
+  @include breakpoint('medium+') {
+    display: block;
+  }
+}
+
+.quote .f-quote:first-child {
+  @include tucked-align-top($f-quote);
+}
+
+.quote .f-deck:first-child {
+  @include tucked-align-top($f-deck);
+}
+
+.quote--editorial,
+.o-article--editorial .o-blocks .quote {
+  padding: 12px 40px 60px 12px;
+  border-radius: $border-radius;
+  background-color: $color__bg--editorial;
+
+  @include breakpoint('small+') {
+    padding: 16px 40px 80px 20px;
+  }
+
+  @include breakpoint('medium+') {
+    padding-top: 20px;
+    padding-bottom: 116px;
+  }
+}
+
+.quote--editorial::before,
+.o-article--editorial .o-blocks .quote::before {
+  content: none;
+  display: none;
+}
+
+.quote--editorial .f-deck,
+.o-article--editorial .o-blocks .quote .f-deck,
+.quote--editorial .f-quote,
+.o-article--editorial .o-blocks .quote .f-quote {
+  font-style: italic;
+  color: $color__text--title;
+}
+
+.quote--editorial .quote__icon,
+.o-article--editorial .o-blocks .quote__icon {
+  position: absolute;
+  left: auto;
+  right: 16px;
+  top: auto;
+  bottom: 16px;
+  color: $color__text--editorial;
+  transform: none;
+
+  @include breakpoint('medium+') {
+    right: 20px;
+    bottom: 20px;
+  }
+}

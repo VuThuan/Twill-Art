@@ -1,0 +1,23 @@
+{
+    "id": 245335,
+    "api_model": "products",
+    "api_link": "https://api.artic.edu/api/v1/products/245335",
+    "title": "Faber-Castell Getting Started Watercolor Kit",
+    "external_sku": 102024,
+    "image_url": "https://shop-images.imgix.net/102024_2.jpg",
+    "web_url": "https://shop.artic.edu/products/102024",
+    "description": "<p>Discover the magic of watercolor pencils. The paint is in the pencils! <br>Designed for beginners, our kit teachers the basic technique of working with watercolor pencils. <br>Our kit contains an instruction book, 8 water color pencils, water color paper, paper with practice grid, paint brush and pencil sharpener.</p>\n<p>Recommended for age 13 and up.</p>",
+    "price_display": "<p>$28</p>",
+    "min_compare_at_price": null,
+    "max_compare_at_price": null,
+    "min_current_price": 28,
+    "max_current_price": 28,
+    "artist_ids": [],
+    "artwork_ids": [],
+    "exhibition_ids": [
+        2522
+    ],
+    "last_updated_source": "2022-06-17T00:00:00-05:00",
+    "last_updated": "2022-06-18T23:01:45-05:00",
+    "timestamp": "2022-06-19T01:47:36-05:00"
+}

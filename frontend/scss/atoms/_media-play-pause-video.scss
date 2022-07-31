@@ -1,0 +1,62 @@
+/***
+
+media-play-pause-video
+======================
+
+Used to allow videos in hero's and hero listings pauseable to top them being distracting to users trying to read the page.
+
+```
+<button class="btn btn--nonary btn--icon media-play-pause-video" aria-label="Pause video" data-behavior="mediaPlayPauseVideo">
+    <svg aria-hidden="true" class="icon--pause">
+      <use xlink:href="#icon--pause"></use>
+    </svg>
+    <svg aria-hidden="true" class="icon--play">
+      <use xlink:href="#icon--play"></use>
+    </svg>
+</button>
+```
+
+***/
+
+.media-play-pause-video {
+  display: none;
+
+  @include breakpoint('small+') {
+    display: inline-block;
+  }
+
+  &.btn.btn--icon {
+    display: none;
+
+    @include breakpoint('small+') {
+      display: inline-block;
+    }
+  }
+
+  svg.icon--play {
+    display: none;
+  }
+
+  &.s-paused {
+
+    svg.icon--pause {
+      display: none;
+    }
+
+    svg.icon--play {
+      display: inline-block;
+    }
+  }
+
+  #demo > & {
+    display: block;
+    margin: 20px;
+    opacity: 1;
+  }
+}
+
+.media-play-pause-video {
+  transition-property: opacity;
+  transition-duration: .15s;
+  transition-timing-function: ease-in-out;
+}

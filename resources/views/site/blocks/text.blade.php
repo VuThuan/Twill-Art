@@ -1,0 +1,1 @@
+{!! $block->present()->input('text') !!}

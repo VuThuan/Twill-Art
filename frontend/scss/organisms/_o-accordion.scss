@@ -1,0 +1,428 @@
+
+
+.o-accordion {
+
+h3 {
+  padding: 25px 0;
+}
+
+.o-article + & {
+    margin-top: 40px;
+  }
+}
+
+.o-accordion__trigger {
+  position: relative;
+  padding-right: 60px;
+  padding-left: 0px;
+  color: $color__text--title;
+  cursor: pointer;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+}
+
+.o-accordion__trigger.s-inactive {
+  cursor: default;
+}
+
+.o-accordion__trigger.f-module-title-2 {
+  padding-top: 44px - 24px - 1px;
+  border-top: 1px solid $color__rules--primary;
+
+  @include breakpoint('small+') {
+    padding-top: 48px - 28px - 1px;
+  }
+
+  &[aria-expanded=true] {
+    border-top-color: $color__rules--secondary;
+  }
+}
+
+.o-accordion__trigger.f-list-3 {
+  padding-top: 44px - 24px - 1px;
+  border-top: 1px solid $color__rules--primary;
+
+  @include breakpoint('small+') {
+    padding-top: 48px - 28px - 1px;
+  }
+
+  &[aria-expanded=true] {
+    border-top-color: $color__rules--secondary;
+  }
+}
+
+// For collection filters
+.o-accordion__trigger.f-tag-2 {
+  padding-bottom: 22px - 1px;
+  border-bottom: 1px solid $color__rules--primary;
+
+  @include breakpoint('medium+') {
+    padding-bottom: 24px - 1px;
+  }
+}
+
+.o-accordion__trigger.f-module-title-2:not(:first-child),
+.o-accordion__trigger.f-list-3:not(:first-child),
+.o-accordion__trigger.f-tag-2:not(:first-child) {
+  margin-top: 30px;
+
+  @include breakpoint('small+') {
+    margin-top: 38px;
+  }
+
+  @include breakpoint('medium+') {
+    margin-top: 48px;
+  }
+}
+
+.o-accordion__trigger.f-tag-2 .icon--arrow {
+  margin-top: -16px;
+}
+
+.o-accordion__trigger.f-list-4 {
+  padding-top: 20px - 1px;
+  border-top: 1px solid $color__rules--primary;
+
+  @include breakpoint('small+') {
+    padding-top: 28px - 1px;
+  }
+
+  @include breakpoint('medium+') {
+    padding-top: 32px - 1px;
+  }
+
+  @include breakpoint('large+') {
+    padding-top: 28px - 1px;
+  }
+
+  &[aria-expanded="true"] {
+    border-top-color: $color__rules--quaternary;
+  }
+}
+
+.o-accordion__trigger.f-list-4:not(:first-child) {
+  margin-top: 32px;
+
+  @include breakpoint('small+') {
+    margin-top: 40px;
+  }
+
+  @include breakpoint('medium+') {
+    margin-top: 48px;
+  }
+}
+
+.o-accordion__trigger:not(.s-inactive):hover {
+  color: $color__link--tab-hover;
+}
+
+.o-accordion__trigger:not(.s-inactive):focus:not([data-focus-method="mouse"]) {
+  outline-color: Highlight;
+  outline-style: solid;
+  outline-width: 3px;
+
+  &[data-focus-method="mouse"],
+  &[data-focus-method="touch"] {
+    outline: none;
+  }
+}
+
+// WebKit gets its native focus styles.
+@media (-webkit-min-device-pixel-ratio:0) {
+  .o-accordion__trigger:not(.s-inactive):focus:not([data-focus-method="mouse"]) {
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+    outline-width: auto;
+  }
+}
+
+.o-accordion__trigger-icon {
+  position: absolute;
+  right: 8px;
+  top: 28px;
+
+  @include breakpoint('small+') {
+    right: 0;
+  }
+
+  @include breakpoint('medium+') {
+    top: 32px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .o-accordion--alt & {
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+    border: 1px solid $color__rules--primary;
+    border-radius: 50%;
+
+    @include breakpoint('small+') {
+      width: 40px;
+      height: 40px;
+      padding: 11px;
+    }
+  }
+
+  .o-accordion--alt .o-accordion__trigger.f-list-4 & {
+    right: 0;
+    top: 16px;
+
+    @include breakpoint('small+') {
+      top: 24px;
+    }
+
+    @include breakpoint('medium+') {
+      top: 28px;
+    }
+
+    @include breakpoint('large+') {
+      top: 32px;
+    }
+  }
+
+  .o-accordion--alt .o-accordion__trigger[aria-expanded="true"] & {
+    border-color: $color__black--90;
+    background-color: $color__black--90;
+    color: $color__bg;
+  }
+}
+
+.o-accordion__trigger .icon--arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
+  transform: rotate(90deg);
+  transform-origin: 8px 8px;
+}
+
+.o-accordion__trigger .icon--plus {
+  display: block;
+}
+
+.o-accordion__trigger .icon--minus {
+  display: none;
+}
+
+.o-accordion__trigger[aria-expanded="true"] .icon--plus {
+  display: none;
+}
+
+.o-accordion__trigger[aria-expanded="true"] .icon--minus {
+  display: block;
+}
+
+.o-accordion__trigger[aria-expanded="true"] .icon--arrow {
+  transform: rotate(90deg) scaleX(-1);
+}
+
+.o-accordion__panel {
+  height: 0;
+  overflow: hidden;
+  transition: height .2s $bezier--ease-in-out;
+
+  &[aria-hidden="false"] {
+    height: auto;
+    overflow: initial;
+  }
+
+  &.s-inactive {
+    height: auto;
+    overflow: initial;
+    transition: none;
+  }
+}
+
+.o-accordion__panel-content {
+  position: relative;
+  padding-top: .02px;
+  padding-bottom: 4px;
+
+  .o-accordion--section & {
+    padding-top: 28px;
+  }
+
+  @include breakpoint('small+') {
+    padding-bottom: 8px;
+  }
+
+  @include breakpoint('xlarge') {
+
+    .o-accordion--section & {
+      padding-top: 36px;
+    }
+  }
+}
+
+.o-blocks .o-blocks.o-accordion__panel-content {
+  padding-bottom: 4px;
+
+  @include breakpoint('small+') {
+    padding-bottom: 8px;
+  }
+}
+
+.o-accordion__panel-content.o-blocks > p:not([class*=f-]),
+.o-accordion__panel-content.o-blocks > .f-body,
+.o-accordion__panel-content.o-blocks > .f-body-editorial {
+  @include tucked-margin-top($f-body, ('xsmall': 40, 'small+': 56));
+
+  &:first-child {
+    @include tucked-margin-top($f-body, ('xsmall': 60, 'small+': 76));
+  }
+
+  @include breakpoint('small+') {
+    padding-right: colspan(3, small);
+  }
+
+  @include breakpoint('medium+') {
+    padding-right: colspan(3, medium);
+  }
+
+  @include breakpoint('large+') {
+    padding-right: colspan(3, large);
+  }
+
+  @include breakpoint('xlarge') {
+    padding-right: colspan(3, xlarge);
+  }
+}
+
+.o-accordion__panel-content.o-blocks > h4:not([class*=f-]) + p:not([class*=f-]),
+.o-accordion__panel-content.o-blocks > .f-subheading-1 + .f-body,
+.o-accordion__panel-content.o-blocks > .f-subheading-1 + .f-body-editorial {
+  @include tucked-align-top($f-body);
+}
+
+.o-accordion__panel-content.o-blocks > h2:not([class*=f-]),
+.o-accordion__panel-content.o-blocks > .f-module-title-2 {
+  @include tucked-margin-top($f-module-title-2, ('xsmall': 48, 'small+': 68));
+
+  &:first-child {
+    @include tucked-margin-top($f-module-title-2, ('xsmall': 64, 'small+': 76));
+  }
+}
+
+.o-accordion__panel-content.o-blocks > h3:not([class*=f-]),
+.o-accordion__panel-content.o-blocks > .f-subheading-1 {
+  @include tucked-margin-top($f-subheading-1, ('xsmall': 40, 'small+': 56));
+
+  &:first-child {
+    @include tucked-margin-top($f-subheading-1, ('xsmall': 56, 'small+': 64));
+  }
+}
+
+.o-accordion__panel-content.o-blocks > small,
+.o-accordion__panel-content.o-blocks > .f-secondary {
+  @include tucked-margin-top($f-secondary, ('xsmall': 40, 'small+': 56));
+
+  &:first-child {
+    @include tucked-margin-top($f-secondary, ('xsmall': 56, 'small+': 64));
+  }
+}
+
+.o-accordion__panel-content.o-blocks > p:not([class*=f-]),
+.o-accordion__panel-content.o-blocks > ul:not([class*=f-]):not([class*=o-]):not([class*=m-]),
+.o-accordion__panel-content.o-blocks > ol:not([class*=f-]):not([class*=o-]):not([class*=m-]),
+.o-accordion__panel-content.o-blocks > .f-body {
+  @include tucked-margin-top($f-secondary, ('xsmall': 40, 'small+': 56));
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 48px;
+  }
+}
+
+.o-accordion__panel-content.o-blocks > * {
+  margin-top: 0;
+}
+
+.o-accordion__panel-content.o-blocks > *:last-child {
+  margin-bottom: 48px;
+}
+
+.o-accordion--publication-sidebar {
+  margin-bottom: 25px;
+
+  h3 {
+    padding: 1px 0 0 0;
+  }
+
+  .o-accordion__trigger {
+    padding-bottom: 18px;
+    padding-top: 12px;
+
+    &:not(.s-inactive) {
+      color: $color__black--90;
+
+      &:hover {
+        color: $color__grey--110;
+      }
+    }
+  }
+
+  .o-accordion__trigger-icon {
+    margin-top: -17px;
+  }
+
+  .o-accordion__panel-content {
+    padding-top: 5px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $color__rules--primary;
+
+    .m-link-list__item:first-child::after {
+      content: none;
+    }
+
+    &.o-blocks>:last-child {
+      margin-bottom: 0;
+    }
+
+    .m-link-list__sublabel {
+      color: $color__grey--120;
+    }
+
+    a.m-link-list__trigger.f-secondary {
+      color: $color__black--90;
+
+      &:hover,
+      &:focus:hover,
+      &:active:hover {
+        color: $color__grey--110;
+      }
+    }
+
+    .m-link-list__item.s-active {
+      &::after {
+        background-color: $color__rules--primary;
+      }
+
+      > a.m-link-list__trigger.f-secondary {
+        color: $color__blue;
+
+        &:hover,
+        &:focus:hover {
+          color: $color__blue--hover;
+        }
+
+        &:active:hover {
+          color: $color__blue--active;
+        }
+      }
+    }
+  }
+}

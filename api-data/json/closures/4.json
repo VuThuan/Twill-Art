@@ -1,0 +1,13 @@
+{
+    "id": 4,
+    "api_model": "closures",
+    "api_link": "https://api.artic.edu/api/v1/closures/4",
+    "title": "Lorem ipsum.",
+    "date_start": "2021-12-25T00:00:00-06:00",
+    "date_end": "2021-12-25T00:00:00-06:00",
+    "closure_copy": "<p>The museum is closed for Christmas. <br>We will reopen tomorrow.</p>",
+    "type": 0,
+    "last_updated_source": "2021-12-02T11:09:10-06:00",
+    "last_updated": "2022-06-18T23:08:33-05:00",
+    "timestamp": "2022-06-19T01:48:39-05:00"
+}

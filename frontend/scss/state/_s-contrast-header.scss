@@ -1,0 +1,95 @@
+/***
+
+Contrast header
+============================
+
+If the page has a hero or listing hero at the top - the header becomes transparent when you're at the top of the page.
+
+The tricky part is, that when you scroll up and the header re-appears, it now needs its white background.
+
+
+***/
+
+.s-contrast-header {
+
+  #a17 {
+    padding-top: 0;
+
+    @include breakpoint('small+') {
+      padding-top: 0;
+    }
+
+    @include breakpoint('medium+') {
+      padding-top: 0;
+    }
+  }
+
+  &:not(.s-scroll-direction-up),
+  &:not(.s-header-hide) {
+
+    .g-header {
+      background-color: rgba($color__white,0);
+      transition: background-color .25s .25s, opacity .25s .25s, transform 0s .5s;
+
+      @supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
+        -webkit-backdrop-filter: blur(0);
+        backdrop-filter: blur(0);
+
+      }
+    }
+
+    .g-header__inner {
+      border-bottom-color: rgba($color__rules--primary, 0);
+      transition: border-bottom-color .25s .25s;
+    }
+
+    .g-header .icon--search--24,
+    .g-header__nav-primary a {
+      color: $color__text--title-contrast;
+      transition: color .25s .25s;
+
+      @include breakpoint('small+') {
+        color: $color__text--title-contrast;
+      }
+    }
+
+    .g-header__logo,
+    .g-header__opening-hours,
+    .g-header__opening-hours a,
+    .g-header__menu-link,
+    .g-header__menu-link:active {
+      color: $color__text--title-contrast;
+      transition: color .25s .25s;
+    }
+
+    .g-header__nav-secondary a,
+    .g-header__menu-link:hover,
+    .g-header__menu-link:focus {
+      color: rgba($color__text--title-contrast, .7);
+      transition: color .25s .25s;
+    }
+
+    .g-header__nav-primary a:hover {
+      @include text-underline(1.12em, $color__text--title-contrast, transparent);
+    }
+
+    .g-header__nav-primary .s-current a {
+      background: none;
+      text-shadow: none;
+    }
+
+    .g-header__opening-hours a:hover,
+    .g-header__nav-secondary a:hover,
+    .g-header__opening-hours a:active,
+    .g-header__nav-secondary a:active {
+      @include text-underline(1.02em, $color__text--title-contrast, transparent);
+    }
+  }
+
+  &.s-filled-logo {
+
+    .g-header__logo {
+      color: $color__link--accent;
+    }
+  }
+}

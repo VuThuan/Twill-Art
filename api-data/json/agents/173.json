@@ -1,0 +1,36 @@
+{
+    "id": 173,
+    "api_model": "agents",
+    "api_link": "https://api.artic.edu/api/v1/agents/173",
+    "title": "Max Ackermann",
+    "sort_title": "Ackermann, Max",
+    "alt_titles": null,
+    "birth_date": 1887,
+    "birth_place": null,
+    "death_date": 1975,
+    "death_place": null,
+    "description": null,
+    "ulan_id": null,
+    "is_artist": true,
+    "agent_type_title": "Individual",
+    "agent_type_id": 7,
+    "artwork_ids": [
+        25713
+    ],
+    "site_ids": [],
+    "suggest_autocomplete_all": {
+        "input": [
+            "Max Ackermann",
+            "Ackermann, Max"
+        ],
+        "weight": 2,
+        "contexts": {
+            "groupings": [
+                "title"
+            ]
+        }
+    },
+    "last_updated_source": "1976-09-02T11:20:00-05:00",
+    "last_updated": "2022-03-15T16:46:27-05:00",
+    "timestamp": "2022-06-19T01:31:42-05:00"
+}

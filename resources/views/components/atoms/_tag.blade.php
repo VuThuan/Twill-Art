@@ -1,0 +1,1 @@
+<{{ $tag ?? 'a' }}{!! isset($href) ? ' href='.$href.'' : '' !!} class="tag {{ $font ?? 'f-tag' }}{{ (isset($variation)) ? ' '.$variation : '' }}"{!! (isset($behavior)) ? ' data-behavior="'.$behavior.'"' : '' !!}{!! (isset($dataAttributes)) ? ' '.$dataAttributes.'' : '' !!}{!! (isset($gtmAttributes)) ? ' '.$gtmAttributes.'' : '' !!}>{{ $slot }}</{{ $tag ?? 'a' }}>

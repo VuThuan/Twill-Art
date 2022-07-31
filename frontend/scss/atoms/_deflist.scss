@@ -1,0 +1,184 @@
+/***
+
+deflist
+==========
+
+```
+<dl class="deflist">
+  <dt><span class="f-module-title-1">Lorem ipsum dolor sit amet</span></dt>
+    <dd><span class="f-secondary">Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></dd>
+  <dt><span class="f-module-title-1">Lorem ipsum dolor sit amet</span></dt>
+    <dd><span class="f-secondary">Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></dd>
+  <dt><span class="f-module-title-1">Lorem ipsum dolor sit amet</span></dt>
+    <dd><span class="f-secondary">Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></dd>
+</dl>
+```
+
+***/
+/*
+
+##### PHP include
+
+views/components/blocks/_blocks.blade.php
+
+`deflist` is one of the blocks to appear within the blocks repeater/for loop
+
+Variable | Purpose | Required?
+--- | --- | ---
+$variation | variation (CSS class) | No
+
+And then for each item in the `deflist`:
+
+Variable | Purpose | Required?
+--- | --- | ---
+$item['key'] | Content for the `dt` | Yes
+$item['itemprop'] | Schema `itemprop` for `dd` | No
+$item['value'] | Content for `dd` | Yes
+
+Or, if the `dd` contains links, for each link:
+
+Variable | Purpose | Required?
+--- | --- | ---
+$item['gtmAttributes'] | for adding Google Tag Manager attributes to link | No
+$item['value'] | Content for `dd` | Yes
+$link['href'] | URL for link | Yes
+$link['label'] | Text for link | Yes
+
+Demonstrated in **statics/article**
+
+*NB* the display of deflist is enhanced by CSS grid, so differences between browsers in the display of deflist is expected if a browser does not support CSS grid.
+
+***/
+
+.deflist {
+  margin-top: 0;
+}
+
+.deflist dt {
+  display: block;
+  position: relative;
+  margin-top: 20px;
+  padding-right: 20px;
+  padding-top: .02px;
+  color: $color__text--title;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.deflist dd {
+  display: block;
+  position: relative;
+  padding-top: .02px;
+  word-wrap: break-word;
+}
+
+.deflist dt::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-color: $color__rules--primary;
+}
+
+@supports (display: grid) {
+  @include breakpoint('small+') {
+    .deflist {
+      display: grid;
+      grid-template-columns: max-content auto;
+    }
+
+    .deflist dt {
+      grid-column-start: 1;
+    }
+
+    .deflist:not(.deflist--free-spacing) {
+      dt {
+        @include breakpoint('small+') {
+          width: colspan(18, small);
+        }
+
+        @include breakpoint('medium+') {
+          width: colspan(8, medium);
+        }
+
+        @include breakpoint('large+') {
+          width: colspan(8, large);
+        }
+
+        @include breakpoint('xlarge') {
+          width: colspan(8, xlarge);
+        }
+      }
+
+      // @see .o-article__secondary-actions ~ .o-article__body
+      // Subtract dt width from that width...
+      dd {
+        @include breakpoint('small+') {
+          width: colspan(40, small);
+        }
+
+        @include breakpoint('medium+') {
+          width: colspan(30, medium);
+        }
+
+        @include breakpoint('large+') {
+          width: colspan(20, large);
+        }
+
+        @include breakpoint('xlarge') {
+          width: colspan(20, xlarge);
+        }
+      }
+    }
+
+    .deflist dd {
+      grid-column-start: 2;
+      margin-top: 20px;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+
+    .deflist dd::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background-color: $color__rules--primary;
+    }
+  }
+}
+
+
+.deflist .f-module-title-1 {
+  @include tucked-margin-top($f-module-title-1, ('xsmall': 28));
+  display: block;
+}
+
+.deflist .f-secondary {
+  @include tucked-margin-top($f-secondary, ('xsmall': 24, 'small+': 28));
+  display: block;
+}
+
+
+.deflist .f-secondary a {
+  @include text-underline(1.02em, $color__rules--secondary);
+
+  &:hover,
+  &:focus:hover {
+    @include text-underline(1.02em, $color__link--hover);
+  }
+
+  &:active:hover {
+    @include text-underline(1.02em, $color__link--active);
+  }
+}

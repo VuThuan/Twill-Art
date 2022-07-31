@@ -1,0 +1,46 @@
+/***
+
+info-button-info
+================
+
+Image credit for hero images - content is filled out by `infoButtonInfo.js`
+
+```
+<span class="info-button-info" id="info-button-info" data-behavior="infoButtonInfo">
+    <span class="f-caption">Credit Mike Byrne, AREA 17</span>
+</span>
+```
+
+***/
+
+
+.info-button-info {
+  position: absolute;
+  z-index: map-get($zindexs, 'infoBubbleInfo');
+  min-width: 80px;
+  max-width: 180px;
+  padding: 8px 16px 16px;
+  background-color: $color__white;
+  box-shadow: $shadow;
+  transition: opacity .15s;
+  white-space: initial;
+
+  @include breakpoint('small+') {
+    max-width: 250px;
+  }
+
+  #demo & {
+    position: static;
+    display: block;
+    opacity: 1;
+    margin: 40px;
+  }
+}
+
+.info-button-info.s-hidden {
+    display: none;
+  }
+
+.info-button-info .f-caption {
+  @include tucked-align-top($f-caption);
+}

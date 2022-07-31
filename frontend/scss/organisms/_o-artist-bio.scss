@@ -1,0 +1,246 @@
+$bioBreakpoints: (
+  'large',
+  'xlarge',
+);
+
+.o-artist-bio {
+  position: relative;
+  margin-top: 24px;
+  padding-top: 24px;
+
+  @include breakpoint('small+') {
+    margin-top: 40px;
+  }
+
+}
+
+.o-artist-bio::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-color: $color__rules--primary;
+}
+
+.o-artist-bio__inner {
+  display: flex;
+  position: relative;
+  flex-flow: column wrap;
+
+  @each $name, $point in $bioBreakpoints {
+    @include breakpoint('#{$name}') {
+      flex-flow: row wrap;
+      margin-left: colspan(2, $name, 0, true);
+    }
+  }
+}
+
+.o-author-bio .o-artist-bio__inner {
+  @include breakpoint('medium') {
+    flex-flow: row wrap;
+  }
+}
+
+.o-artist-bio__main,
+.o-artist-bio__image {
+  width: 100%;
+  @each $name, $point in $bioBreakpoints {
+    @include breakpoint('#{$name}') {
+      width: colspan(grid-cols-to-colspan(2), $name);
+      margin-left: colspan(2, #{$name});
+    }
+  }
+}
+
+.o-author-bio .o-artist-bio__image {
+  @each $name, $point in ('xsmall', 'small') {
+    @include breakpoint('#{$name}') {
+      width: 300px;
+      align-self: center;
+    }
+  }
+
+  @each $name, $point in ('medium', 'large', 'xlarge') {
+    @include breakpoint('#{$name}') {
+      width: 300px;
+    }
+  }
+
+  .m-media__img {
+    background: none;
+  }
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.o-author-bio .o-artist-bio__main {
+  @each $name, $point in ('medium', 'large', 'xlarge') {
+    @include breakpoint('#{$name}') {
+      width: calc(#{colspan(58, $name)} - 300px - #{colspan(2, $name)});
+      margin-left: colspan(2, #{$name});
+    }
+  }
+}
+
+.o-author-bio .o-artist-bio__main .o-artist-bio__body {
+  margin-top: 24px;
+
+  @include breakpoint('medium+') {
+    margin-top: 0;
+  }
+}
+
+// WEB-1163: Hyper-specific override for _m-media.scss
+.o-artist-bio__image .m-media--s.o-blocks__block .m-media__img img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 65vh;
+}
+
+.o-artist-bio__image figcaption {
+  @extend %f-caption;
+  margin-top: 8px;
+  color: $color__text--secondary;
+
+  p a {
+    @include text-underline(20px, $color__rules--primary);
+    padding-bottom: 1px;
+    color: $color__text--accent;
+  }
+
+  p a:hover,
+  p a:focus {
+    @include text-underline(20px, $color__rules--brand);
+  }
+}
+
+.o-artist-bio__main {
+}
+
+.o-artist-bio__main dl {
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+  margin-top: 16px;
+
+  @include breakpoint('large+') {
+    margin-top: -16px;
+  }
+
+  @each $name, $point in $breakpoints {
+    @include breakpoint('#{$name}') {
+      margin-left: colspan(2, $name, 0, true);
+    }
+  }
+}
+
+.o-artist-bio__main dt,
+.o-artist-bio__main dd {
+  @include breakpoint('small+') {
+    margin-top: 4px;
+  }
+
+  @each $name, $point in $breakpoints {
+    @include breakpoint('#{$name}') {
+      margin-left: colspan(2, $name);
+    }
+  }
+}
+
+.o-artist-bio__main dt {
+  @extend %f-subheading-1;
+  width: colspan(58, xsmall);
+
+  @include breakpoint(xsmall) {
+    margin-top: 12px;
+  }
+
+  @include breakpoint(small) {
+    width: colspan(18, small);
+  }
+
+  @include breakpoint(medium) {
+    width: colspan(18, medium);
+  }
+
+  @include breakpoint(large) {
+    width: colspan(8, large);
+  }
+
+  @include breakpoint(xlarge) {
+    width: colspan(8, xlarge);
+  }
+}
+
+.o-artist-bio__main dt:first-child {
+  @include breakpoint(xsmall) {
+    margin-top: 0;
+  }
+}
+
+.o-artist-bio__main dd {
+  @extend %f-body;
+  color: $color__text--secondary;
+  width: colspan(58, small);
+
+  @include breakpoint(small) {
+    width: colspan(38, small);
+  }
+
+  @include breakpoint(medium) {
+    width: colspan(33, medium);
+  }
+
+  @include breakpoint(large) {
+    width: colspan(18, large);
+  }
+
+  @include breakpoint(xlarge) {
+    width: colspan(18, xlarge);
+  }
+}
+
+.o-artist-bio__body p {
+  @extend %f-body;
+}
+
+.o-artist-bio__body a {
+  @include text-underline(20px, $color__rules--primary);
+  padding-bottom: 1px;
+  color: $color__text--accent;
+}
+
+.o-artist-bio__body a:hover,
+.o-artist-bio__body a:focus {
+  @include text-underline(20px, $color__rules--brand);
+}
+
+.o-artist-bio__main dl + .o-artist-bio__body {
+  margin-top: 24px;
+}
+
+.o-artist-bio__tags {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 24px;
+  padding-top: .02px;
+
+  @include breakpoint('small+') {
+    margin-top: 32px;
+  }
+}
+
+.o-artist-bio__tags > li {
+  flex: 0 0 auto;
+  margin-top: 8px;
+  margin-right: 20px;
+}
+
+.o-artist-bio__tags .tag {
+  display: block;
+}

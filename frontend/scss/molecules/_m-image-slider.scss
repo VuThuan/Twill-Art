@@ -1,0 +1,113 @@
+.m-image-slider {
+  height: 100%;
+  width: 100%;
+  top: 0;
+
+  position: absolute;
+
+  .m-image-slider__viewer {
+    height: 100%;
+  }
+
+  .m-image-slider__handle {
+
+    position: absolute;
+
+    /* center the element */
+    left: 50%;
+    top: 50%;
+
+    // Overflow of divider is hidden by .m-media__img
+    .m-image-slider__handle__divider {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      background-color: white;
+      width: 3px;
+      height: 150vh;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .m-image-slider__handle__circle {
+      position: absolute;
+
+      height: 45px;
+      width: 45px;
+
+      /* center the element */
+      left: 50%;
+      top: 50%;
+
+      margin-left: -23px;
+      margin-top: -23px;
+
+      border-radius: 50%;
+
+      background: #8e847d !important;
+      cursor: move;
+
+      box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      z-index: 3;
+    }
+
+    &.draggable {
+      background-color: #445b7c;
+    }
+
+    svg {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  // Actions adapted from o-fullscreen-image
+  .m-image-slider__actions {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    flex-flow: row no-wrap;
+    justify-content: center;
+
+    @include breakpoint('small+') {
+      left: auto;
+      right: 32px;
+      bottom: 32px;
+    }
+
+    .s-dragging ~ & {
+      opacity: .5;
+      pointer-actions: none;
+    }
+
+    > li {
+      flex: 0 0 auto;
+
+      &:not(:first-child) {
+        margin-left: 1px;
+      }
+
+      .btn {
+        border-radius: 0;
+      }
+
+      &:first-child .btn {
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+      }
+
+      &:last-child .btn {
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+      }
+    }
+  }
+}

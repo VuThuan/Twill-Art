@@ -1,0 +1,158 @@
+/***
+
+```
+<div class="m-row-block m-row-block---keyline-top">
+    <h4 class="f-module-title-1 m-row-block__title">Further support has been provided by</h4>
+    <div class="m-row-block__img">
+        <img alt="" class="" src="http://placeimg.com/320/320/nature" sizes="" srcset="" width="320" height="320">
+    </div>
+    <div class="m-row-block__text">
+        <p class="f-secondary">Ut minima eius reiciendis modi est. Magni distinctio deleniti qui ab. Voluptatibus dolore veritatis sint optio tenetur aliquid. Pariatur cum et optio soluta. Omnis vel dolorem dolor optio distinctio illo consequatur pariatur.</p>
+    </div>
+</div>
+```
+
+***/
+
+.m-row-block {
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+
+  & + & {
+    margin-top: 16px;
+
+    @include breakpoint('small+') {
+      margin-top: 32px;
+    }
+  }
+}
+
+.m-row-block__title {
+  flex: 0 0 auto;
+  width: 100%;
+  margin-bottom: 20px; // Naughty I know, made the vertical centering of the text below easier
+}
+
+.m-row-block__img {
+  flex: 0 0 auto;
+  width: colspan(13, xsmall);
+  margin-right: colspan(2, xsmall);
+
+  @include breakpoint('small+') {
+    width: colspan(10, small);
+    margin-right: colspan(2, small);
+  }
+
+  @include breakpoint('medium+') {
+    width: colspan(5, medium);
+    margin-right: colspan(2, medium);
+  }
+
+  @include breakpoint('large+') {
+    width: colspan(5, large);
+    margin-right: colspan(2, large);
+  }
+
+  @include breakpoint('xlarge') {
+    width: colspan(5, xlarge);
+    margin-right: colspan(2, xlarge);
+  }
+}
+
+.m-row-block__img img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.m-row-block__text {
+  flex: 1;
+}
+
+.m-row-block .f-module-title-1:first-child {
+  @include tucked-align-top($f-module-title-1);
+}
+
+.m-row-block .f-secondary:first-child {
+  @include tucked-margin-top($f-secondary, (xsmall: 12));
+}
+
+.m-row-block .f-subheading-1:first-child {
+  @include tucked-align-top($f-subheading-1);
+}
+
+.m-row-block .f-body:first-child {
+  @include tucked-align-top($f-body);
+}
+
+.m-row-block .f-body-editorial:first-child {
+  @include tucked-align-top($f-body-editorial);
+}
+
+
+
+
+.m-row-block--keyline-top {
+  padding-top: 8px;
+}
+
+.m-row-block--keyline-top::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-color: $color__rules--primary;
+}
+
+
+
+
+.m-row-block--inline-title {
+  flex-direction: row-reverse;
+  margin-top: 24px;
+
+  & + & {
+    margin-top: 20px;
+  }
+
+  &.m-row-block--keyline-top {
+    padding-top: 20px;
+  }
+}
+
+.m-row-block--inline-title .m-row-block__img {
+  width: colspan(13, xsmall);
+  margin-right: 0;
+  margin-left: colspan(2, xsmall);
+
+  @include breakpoint('small+') {
+    width: colspan(13, small);
+    margin-right: 0;
+    margin-left: colspan(2, small);
+  }
+
+  @include breakpoint('medium+') {
+    width: colspan(8, xlarge);
+    margin-right: 0;
+    margin-left: colspan(2, medium);
+  }
+
+  @include breakpoint('large+') {
+    width: colspan(8, large);
+    margin-right: 0;
+    margin-left: colspan(2, large);
+  }
+
+  @include breakpoint('xlarge') {
+    width: colspan(8, xlarge);
+    margin-right: 0;
+    margin-left: colspan(2, xlarge);
+  }
+}
+
+.m-row-block--inline-title .m-row-block__title {
+  margin-bottom: 0;
+}

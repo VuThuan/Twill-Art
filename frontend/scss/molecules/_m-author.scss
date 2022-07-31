@@ -1,0 +1,100 @@
+/***
+
+```
+```
+
+***/
+
+
+.m-author {
+  display: flex;
+  position: relative;
+  flex-flow: row nowrap;
+
+  @include breakpoint('xlarge') {
+    flex-flow: column nowrap;
+  }
+}
+
+.m-author---keyline-top {
+  padding-top: 16px;
+}
+
+.m-author---keyline-top::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-color: $color__rules--primary;
+}
+
+
+.m-author__img {
+  position: relative;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+
+  @include breakpoint('xlarge') {
+    width: 88px;
+    height: 88px;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+}
+
+.m-author__img img {
+  @include objectFitFix;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.m-author .f-secondary {
+  @include tucked-margin-top($f-secondary, ('xsmall': 12, 'medium+': 12));
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+.m-author .m-author__img + .f-secondary {
+  max-width: calc(100% - 52px);
+}
+
+.m-author a {
+  color: $color__link--accent;
+
+  &:hover,
+  &:focus:hover {
+    @include text-underline(1.02em, $color__link--accent-hover);
+    color: $color__link--accent-hover;
+  }
+
+  &:active:hover {
+    @include text-underline(1.02em, $color__link--accent-active);
+    color: $color__link--accent-active;
+  }
+}
+
+.m-author--editorial a {
+  color: $color__link--editorial;
+
+  &:hover,
+  &:focus:hover {
+    @include text-underline(1.02em, $color__link--editorial-hover);
+    color: $color__link--editorial-hover;
+  }
+
+  &:active:hover {
+    @include text-underline(1.02em, $color__link--editorial-active);
+    color: $color__link--editorial-active;
+  }
+}

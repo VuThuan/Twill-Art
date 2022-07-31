@@ -1,0 +1,129 @@
+
+.m-share-menu {
+  @extend %styled-scrollbars;
+  display: none;
+  position: fixed;
+  z-index: map-get($zindexs, 'shareMenu');
+  left: colspan(3, xsmall);
+  right: colspan(3, xsmall);
+  top: 50%;
+    margin-top: -144px;
+  max-height: 80vh;
+  background-color: $color__white;
+  box-shadow: $shadow;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: opacity .15s;
+
+  @include breakpoint('small+') {
+    left: colspan(10, small);
+    right: colspan(10, small);
+    top: 50%;
+    margin-top: -144px;
+  }
+
+  @include breakpoint('medium+') {
+    position: absolute;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: 180px;
+    margin-top: 0;
+    max-height: auto;
+    transform: none;
+  }
+}
+
+.m-share-menu--inline {
+  display: block;
+  position: relative;
+  border: 1px solid $color__rules--primary;
+  box-shadow: none;
+}
+
+.m-share-menu__title {
+  @include untuck;
+  padding: 18px 60px 18px 16px;
+  color: $color__text--title;
+
+  @include breakpoint('medium+') {
+    display: none;
+  }
+}
+
+.m-share-menu ul {
+  min-width: 100%;
+  margin-top: 0;
+}
+
+.m-share-menu li {
+  border-top: 1px solid $color__rules--tertiary;
+}
+
+.m-share-menu li:first-child {
+  @include breakpoint('medium+') {
+    border-top: 0 none;
+  }
+}
+
+.m-share-menu ul a,
+.m-share-menu ul button {
+  @include untuck;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px 16px;
+  border: 0 none;
+  background-color: $color__white;
+  color: $color__text--secondary;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.m-share-menu ul.f-secondary a,
+.m-share-menu ul.f-secondary button {
+  padding-top: 11px;
+  padding-bottom: 12px;
+
+  @include breakpoint('large+') {
+    padding-top: 8px;
+    padding-bottom: 11px;
+  }
+}
+
+.m-share-menu ul a:hover,
+.m-share-menu ul button:hover {
+  background-color: $color__bg--secondary;
+  color: $color__text--title;
+}
+
+.m-share-menu ul :active,
+.m-share-menu ul button:active {
+  background-color: $color__bg--primary;
+  color: $color__text--title;
+}
+
+.m-share-menu__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  background: transparent;
+  color: $color__text--title;
+
+  @include breakpoint('medium+') {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin-top: -1px;
+    margin-left: -1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+  }
+}

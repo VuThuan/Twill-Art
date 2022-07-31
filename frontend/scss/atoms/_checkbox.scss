@@ -1,0 +1,181 @@
+/***
+
+checkbox
+==========
+
+```
+<span class="checkbox f-secondary">
+  <input type="checkbox" value="option1" id="option1" name="option1">
+  <span class="f-secondary">
+    <label for="option1">Option 1</label>
+  </span>
+</span>
+<span class="checkbox f-secondary">
+  <input type="checkbox" value="option2" id="option2" name="option2" checked>
+  <span class="f-secondary">
+    <label for="option2">Option 2</label>
+  </span>
+</span>
+<span class="checkbox f-secondary">
+  <input type="checkbox" value="option3" id="option3" name="option3" disabled>
+  <span class="f-secondary">
+    <label for="option3">Option 3 disabled</label>
+  </span>
+</span>
+<br>
+<a href="#" class="checkbox f-secondary">Link that looks like a checkbox <em>(13)</em></a>
+<a href="#" class="checkbox f-secondary s-checked">Link that looks like a checkbox <em>(12)</em></a>
+```
+
+***/
+/*
+
+##### PHP include
+
+views/components/atoms/checkbox.blade.php
+
+Variable | Purpose | Required?
+--- | --- | ---
+$variation | variation (CSS class) | No
+$error | String or null, adds error class and displays error message | No
+$disabled | is the checkbox disabled? | No
+$value | form `value` of checkbox | Yes
+$id | `id` of checkbox | Yes
+$name | `name` of checkbox | Yes
+$checked | is checkbox checked? | No, defaults to not checked
+$font | font of the label | No, defaults to `f-secondary`
+$label | label text | Yes
+$optional | is the field optional? | No
+$hint | does the field have some hint text | No
+
+Demonstrated in **statics/toybox**
+
+Example usage:
+
+```
+<pre><code>@component('components.atoms._checkbox')
+  @slot('id', 'coption1')
+  @slot('value', 'coption1')
+  @slot('name', 'coption1')
+  @slot('label', 'Option 1')
+@endcomponent</code></pre>
+```
+
+***/
+
+.checkbox input[type=checkbox] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 0;
+  border: 0 none;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+}
+
+.checkbox label,
+a.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 28px;
+  color: $color__input-text;
+  cursor: pointer;
+}
+
+.checkbox label em,
+a.checkbox em,
+.checkbox label i,
+a.checkbox i {
+  color: $color__text--forms;
+  font-style: normal;
+}
+
+.checkbox label:hover,
+.checkbox input[type=checkbox]:focus + span label,
+a.checkbox:hover {
+  color: $color__input-text--focus;
+  background-image: none;
+  text-shadow: none;
+}
+
+.checkbox input[type=checkbox]:focus + span label {
+  //@extend %default-focus-style;
+}
+
+.checkbox label::before,
+a.checkbox::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid $color__input-border;
+  border-radius: $border-radius;
+  background-color: $color__white;
+
+  @include breakpoint('medium+') {
+    top: 6px;
+  }
+}
+
+.checkbox label::after,
+a.checkbox::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  width: 5px;
+  height: 12px;
+  border: 1.5px solid $color__white;
+  border-top: 0 none;
+  border-left: 0 none;
+  background-color: transparent;
+  opacity: 0;
+  transform: rotate(45deg) scale(.1);
+  transition: all .15s $bezier__bounce;
+
+  @include breakpoint('medium+') {
+    top: 7px;
+  }
+}
+
+.checkbox input[type=checkbox]:focus + span label::before,
+a.checkbox:focus::before {
+  border-color: $color__input-border--focus;
+}
+
+.checkbox label:hover::before,
+a.checkbox:hover::before {
+  border-color: $color__input-border--hover;
+}
+
+
+
+.checkbox input[type=checkbox]:checked + span label::before,
+a.checkbox.s-checked::before {
+  border-color: $color__input-border--checked;
+  background-color: $color__input-border--checked;
+}
+
+.checkbox input[type=checkbox]:checked + span label::after,
+a.checkbox.s-checked::after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+
+
+.checkbox input[type=checkbox]:disabled + span label,
+a.checkbox:disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+
+.checkbox.s-error label::before,
+a.checkbox.s-error::before {
+  border-color: $color__input-border--error;
+}

@@ -1,0 +1,160 @@
+// Baseline grid height
+@use "sass:math";
+
+$base-height: 4;
+
+
+// Max widths the main column can run to over the breakpoints
+// values can either be 'fluid' or a pixel value
+// recommended xxlarge is a px value and xsmall is fluid
+$main-col-widths: (
+  xsmall: 'fluid',
+  small: 'fluid',
+  medium: 'fluid',
+  large: 'fluid',
+  xlarge: 1500px,
+);
+
+// Outer gutters, in px or vw, of each breakpoint
+$outer-gutters: (
+  xsmall: math.div(300vw, 64),
+  small: math.div(300vw, 64),
+  medium: math.div(300vw, 64),
+  large: math.div(300vw, 64),
+  xlarge: 0,
+);
+
+// Breakpoint information, where each starts and stops
+// if a breakpoint is not fluid, then the start value is equal to the main col value plus 2x the gutter at this breakpoint
+$breakpoints: (
+  xsmall: (start: null, end: 599),
+  small: (start: 600, end: 899),
+  medium: (start: 900, end: 1199),
+  large: (start: 1200, end: 1639),
+  xlarge: (start: 1640, end: null),
+);
+
+// Zindexs
+$zindexs: (
+  stickyFilters: 7,
+  header: 8,
+  articleStickyHeader: 9,
+  articleTopLink: 9,
+  searchTriggers: 9,
+  mask: 10,
+  modal: 11,
+  fullscreenImage: 11,
+  calendar: 11,
+  searchForm: 11,
+  searchFilters: 11,
+  shareMenu: 12,
+  infoBubbleInfo: 12,
+  mobileNav: 13,
+  dropdown: 13,
+  dragScrollLock: 14,
+  ajaxLoader: 15,
+);
+
+// Uniform border radius
+$border-radius: 2px;
+
+// Shadow
+$shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 2px 5px 0 rgba(0, 0, 0, .1);
+
+// Some easing functions
+$bezier--bounce: cubic-bezier(.5, -.6, .5, 1.6);
+$bezier--ease-in-out: cubic-bezier(.445, .05, .55, .95);
+$bezier--ease-out-circ: cubic-bezier(.075, .82, .165, 1);
+$bezier--ease-in-circ: cubic-bezier(.6, .04, .98, .335);
+$bezier--marius-ease: cubic-bezier(.59, .01, .28, 1);
+//$bezier--marius-mosaic: cubic-bezier(.5, -.6, .5, 1.6);
+$bezier--marius-mosaic: ease-in-out;
+
+// Grid spacing, used in `.o-grid-listing` and `.o-features`
+
+$grid-margin-tops: (
+  xsmall: 16,
+  small: 24,
+  medium: 28,
+  large: 32,
+  xlarge: 32,
+);
+
+$grid-padding-tops: (
+  xsmall: 3,
+  small: 1.5,
+  medium: 1.5,
+  large: 1,
+  xlarge: 1,
+);
+
+$pinboard-grid-margin-tops: (
+  xsmall: 28,
+  small: 28,
+  medium: 40,
+  large: 60,
+  xlarge: 60,
+);
+
+$pinboard-grid-padding-tops: (
+  xsmall: 28,
+  small: 28,
+  medium: 28,
+  large: 32,
+  xlarge: 32,
+);
+
+$journal-header-padding: (
+  xsmall: 12px,
+  small: 24px,
+  medium: 24px,
+  large: 40px,
+  xlarge: 40px,
+);
+
+$journal-header-margin-bottom: (
+  xsmall: 24px,
+  small: 32px,
+  medium: 48px,
+  large: 60px,
+  xlarge: 60px,
+);
+
+// ####################################################
+// Site font stack variables
+//
+// uncomment and complete stack with project fonts
+// xxxxx--loaded variables need a font loader to be activated (see setup/mixins/typography for CSS rule) :
+
+// The fall back font family string. eg. Helvetica, Arial, sans-serif.
+$serif-font: 'Times New Roman', Times, Georgia, serif;
+$sans-serif-font: Helvetica, Arial, sans-serif;
+// The font family string when the primary font is loaded (your primary font plus the fall back string)
+$serif-font--loaded: 'Sabon', #{$serif-font};
+$sans-serif-font--loaded: 'Ideal Sans A', 'Ideal Sans B', #{$sans-serif-font};
+// The appended class names when the fonts have loaded
+$serif-font-loaded-class: 's-serif-loaded';
+$sans-serif-font-loaded-class: 's-sans-serif-loaded';
+
+@if variable-exists('disable-font-loading') and $disable-font-loading {
+    $serif-font: $serif-font--loaded;
+    $sans-serif-font: $sans-serif-font--loaded;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate45deg {
+  0% {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+}

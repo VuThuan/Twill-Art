@@ -1,0 +1,149 @@
+/***
+
+Fixed sidebar
+============================
+
+For _p-issuearticle-show.scss and _p-issue-show.scss
+
+***/
+
+%sticky-sidebar {
+  .g-sidebar__close {
+    display: none;
+  }
+
+  &.is-sidebar-overlay {
+    @include breakpoint('medium-') {
+      .g-mask {
+        right: 0;
+        bottom: 0;
+        opacity: 1;
+        background-color: rgba($color__bg--tertiary, .25);
+
+        @supports (backdrop-filter: blur(5px)) or (-webkit-backdrop-filter: blur(5px)) {
+          background-color: rgba($color__bg--tertiary, .5);
+          -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+        }
+      }
+
+      .o-article__primary-actions {
+        display: block;
+        z-index: 11;
+      }
+
+      .o-sticky-sidebar__sticker {
+        background-color: white;
+        position: fixed;
+        opacity: 1;
+        top: 0;
+        left: 0;
+
+        width: 300px;
+        height: 100vh;
+        overflow-y: auto;
+
+        // Gutters are always about the same as on xsmall
+        padding-left: 20px;
+        padding-right: 20px;
+
+        .g-sidebar__close {
+          display: block;
+          position: absolute;
+          right: 0;
+          top: 0;
+          padding: 8px;
+          border: 0 none;
+          background: transparent;
+          color: $color__text--forms;
+          cursor: pointer;
+
+          &:hover {
+            color: $color__text;
+          }
+
+          .icon--close {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+
+      .o-sticky-sidebar__placeholder::before {
+        content: '';
+      }
+      .o-sticky-sidebar__stopper {
+        clear: both;
+      }
+    }
+  }
+
+  @include breakpoint('large+') {
+    .o-sticky-sidebar__sticker[data-sticky-animated-logo] {
+      .m-article-actions--publication__logo {
+        display: none;
+        transition: opacity 0.3s;
+        opacity: 0;
+      }
+    }
+
+    &.is-sidebar-grabbed,
+    &.is-sidebar-fixed,
+    &.is-sidebar-bottom {
+      .o-sticky-sidebar__sticker {
+
+        &[data-sticky-animated-logo] {
+          .m-article-actions--publication__logo {
+            display: block;
+          }
+        }
+
+        @each $name in ('large', 'xlarge') {
+          @include breakpoint('#{$name}') {
+            width: #{colspan(14, '#{$name}')};
+            padding-right: #{colspan(1, '#{$name}')};
+          }
+        }
+      }
+    }
+
+    &.is-sidebar-fixed,
+    &.is-sidebar-bottom {
+      .o-sticky-sidebar__sticker {
+        &[data-sticky-animated-logo] {
+          .m-article-actions--publication__logo {
+            opacity: 1;
+          }
+        }
+
+        height: 100vh;
+        overflow-y: auto;
+      }
+    }
+
+    &.is-sidebar-grabbed,
+    &.is-sidebar-fixed {
+      .o-sticky-sidebar__sticker {
+        position: fixed;
+        top: 0;
+      }
+      .o-sticky-sidebar__placeholder::before {
+        content: '';
+      }
+      .o-sticky-sidebar__stopper {
+        clear: both;
+      }
+    }
+
+    &.is-sidebar-bottom {
+      .o-article__primary-actions {
+        position: initial;
+      }
+
+      .o-sticky-sidebar__sticker {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+}

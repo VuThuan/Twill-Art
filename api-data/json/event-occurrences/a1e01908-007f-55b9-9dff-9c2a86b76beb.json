@@ -1,0 +1,20 @@
+{
+    "id": "a1e01908-007f-55b9-9dff-9c2a86b76beb",
+    "api_model": "event-occurrences",
+    "api_link": "https://api.artic.edu/api/v1/event-occurrences/a1e01908-007f-55b9-9dff-9c2a86b76beb",
+    "title": "Luminary Tour: Cezanne",
+    "event_id": 5466,
+    "short_description": "Come together with fellow Luminary to enjoy a closer look at the groundbreaking retrospective Cezanne.",
+    "description": "<p>On this guided small-group tour, join fellow Luminary to explore the groundbreaking retrospective <a href=\"https://www.artic.edu/exhibitions/9288/cezanne\" rel=\"noopener noreferrer\" target=\"_blank\"><em>Cezanne</em></a><em>.</em></p><p>Open exclusively to Luminary members, this tour requires advance registration and is limited to twelve participants. The tour lasts approximately 50 minutes. <a href=\"https://admin.www.artic.edu/events?audience=8\" rel=\"noopener noreferrer\" target=\"_blank\">View all upcoming Luminary programs.</a></p><p>So that you can enjoy your experience safely, all museum<a href=\"https://admin.www.artic.edu/visit#expect\" rel=\"noopener noreferrer\" target=\"_blank\">&nbsp;visiting policies</a>&nbsp;at the time of the event must be observed.</p><p><strong>Contact Us</strong></p><p><strong>If you have questions or are interested in learning more about&nbsp;</strong><a href=\"https://admin.www.artic.edu/support-us/membership/luminary-levels\" rel=\"noopener noreferrer\" target=\"_blank\">Luminary membership</a>, we\u2019d be delighted to hear from you. Please contact us at (312) 443-3735 or&nbsp;<a href=\"mailto:luminary@artic.edu\" rel=\"noopener noreferrer\">luminary@artic.edu</a>.</p>",
+    "image_url": "https://artic-web.imgix.net/a6ff7d0d-cdd8-44d2-bffc-34fa3d5f3649/IM047796-int_press1.jpg?rect=43%2C237%2C2919%2C1645&auto=format%2Ccompress&q=80&fit=crop&crop=faces%2Cedges%2Centropy&w=1200&h=676",
+    "is_private": false,
+    "start_at": "2022-06-29T12:00:00-05:00",
+    "end_at": "2022-06-29T13:00:00-05:00",
+    "location": "Regenstein Hall",
+    "button_url": "https://sales.artic.edu/Events/Event/24797?date=6/29/2022",
+    "button_text": "Buy Tickets",
+    "button_caption": "<p>$50 per person</p><p>This tour is limited to twelve participants.</p>",
+    "last_updated_source": "2022-04-15T14:13:31-05:00",
+    "last_updated": "2022-06-18T23:17:49-05:00",
+    "timestamp": "2022-06-19T01:48:49-05:00"
+}

@@ -1,0 +1,18 @@
+/***
+
+Nav mobile active
+============================
+
+Show the burger nav.
+
+
+***/
+
+.s-nav-mobile-active {
+
+  .g-nav-mobile {
+    opacity: 1;
+    display: block;
+    transition: opacity .2s $bezier--ease-in-out;
+  }
+}

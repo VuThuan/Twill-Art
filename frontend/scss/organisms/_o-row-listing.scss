@@ -1,0 +1,18 @@
+
+.o-row-listing {
+  margin-top: 0;
+
+  & + & {
+    margin-top: 40px;
+  }
+}
+
+.o-row-listing > * {
+
+  @each $name, $point in $breakpoints {
+    @include breakpoint('#{$name}') {
+      //margin-top: #{map-get($grid-margin-tops, $name)}px;
+      margin-top: colspan(map-get($grid-padding-tops, $name), #{$name});
+    }
+  }
+}

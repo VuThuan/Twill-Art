@@ -1,0 +1,121 @@
+.o-collection-listing > .m-search-bar,
+.o-collection-listing > .m-quick-search-links,
+.o-collection-listing > .m-search-actions,
+.o-collection-listing__col-right > .m-active-filters {
+
+  @include breakpoint('small-') {
+    display: none;
+  }
+}
+
+.o-collection-listing > .m-search-triggers {
+
+  @include breakpoint('medium+') {
+    display: none;
+  }
+}
+
+.o-collection-listing .m-no-results {
+  margin-top: 15px;
+}
+
+.o-collection-listing .o-pinboard {
+  margin-top: 15px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include breakpoint('small-') {
+    box-shadow: 0 1px 0 $color__white inset;
+    margin-top: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: auto;
+      width: 100%;
+      height: 1px;
+      background: $color__white;
+    }
+  }
+}
+
+
+.o-collection-listing__colset {
+  @include breakpoint('medium+') {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 24px;
+  }
+}
+
+.o-collection-listing__col-left {
+  @include breakpoint('medium+') {
+    flex: 0 0 auto;
+    width: 0;
+    border-right: 1px solid $color__rules--tertiary;
+    opacity: 0;
+    overflow: hidden;
+    transition: width .4s $bezier--marius-ease, .4s margin-right $bezier--marius-ease, .4s padding-right $bezier--marius-ease, opacity .4s;
+  }
+}
+
+.o-collection-listing__col-right {
+  @include breakpoint('medium+') {
+    flex: 1;
+    transition: width .4s $bezier--marius-ease;
+  }
+}
+
+.o-collection-listing__col-left .o-collection-filters {
+  @include breakpoint('medium+') {
+    padding-top: 32px - 1px;
+    border-top: 1px solid $color__rules--primary;
+  }
+}
+
+.o-collection-listing__col-right .m-active-filters {
+  @include breakpoint('medium+') {
+    margin-top: 0;
+  }
+}
+
+.o-collection-listing__col-right .o-pinboard {
+  @include breakpoint('small-') {
+    padding-top: 20px;
+    border-top: 0 none;
+  }
+}
+
+// "Load more artwork" button
+.o-collection-listing .m-links-bar--buttons {
+
+  margin-top: 36px;
+  padding-top: 0;
+
+  &:before {
+    content: initial;
+  }
+
+  .m-links-bar__items-primary {
+    align-items: center;
+    justify-content: center;
+
+    background-color: $color__black--3;
+
+    .m-links-bar__item {
+      padding: 29px 0;
+      margin: 0;
+    }
+  }
+}

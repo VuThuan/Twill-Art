@@ -1,0 +1,161 @@
+.design-grid-toggles {
+  position: fixed;
+  z-index: 9999;
+  right: 0;
+  bottom: 0;
+  font-size: 0;
+
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    right: 5px;
+    bottom: 100%;
+    color: #00a449;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  &::before {
+    margin-bottom: 3px;
+
+    @each $name, $point in $breakpoints {
+      @include breakpoint('#{$name}') {
+        content: '#{$name}';
+      }
+    }
+  }
+
+  &::after {
+    content: attr(data-env);
+    margin-bottom: 17px;
+  }
+}
+
+.design-grid-toggle {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 10px 15px;
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 200ms linear;
+}
+
+.design-grid-toggle--ajax {
+  background-color: red;
+}
+
+.design-grid-toggle.js-active,
+.design-grid-toggle--ajax.js-active {
+  background-color: green;
+}
+
+.design-grid-toggle svg {
+  display: block;
+  width: 10px;
+  height: 10px;
+}
+
+
+.design-grid-toggle--ajax {
+  position: relative;
+
+  svg {
+    transform: scale(2);
+  }
+
+  span {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    font-size: 9px;
+    line-height: 12px;
+    text-align: right;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    transition: opacity .25s;
+    pointer-events: none;
+  }
+
+  &.js-active span {
+    opacity: 1;
+  }
+}
+
+.design-grid--baseline {
+  display: block;
+  position: absolute;
+  z-index: 9998;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0) #{$base-height}px, #7fffff #{$base-height}px, #7fffff #{$base-height + $base-height}px);
+  opacity: .25;
+  pointer-events: none;
+
+  &.js-hide {
+    display: none;
+  }
+}
+
+.design-grid--columns {
+  display: block;
+  position: fixed;
+  z-index: 9998;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: transparent;
+  opacity: .25;
+  pointer-events: none;
+
+  @each $name, $point in $breakpoints {
+    @include breakpoint('#{$name}') {
+      @if (map-get($main-col-widths, $name) == 'fluid') {
+        width: calc(100vw - #{map-get($outer-gutters, $name) * 2});
+      } @else {
+        width: map-get($main-col-widths, $name);
+      }
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(127,255,255,.5),
+        rgba(127,255,255,.5) colspan(1, $name),
+        rgba(255,127,255,.5) colspan(1, $name),
+        rgba(255,127,255,.5) colspan(2, $name)
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(0,0,0,.75),
+        rgba(0,0,0,.75) colspan(3, $name),
+        rgba(0,0,0,0) colspan(3, $name),
+        rgba(0,0,0,0) colspan(5, $name)
+      ),
+      ;
+    }
+  }
+
+  &.js-hide {
+    display: none;
+  }
+}
+
+/* Taken from: http://a11y-guidelines.orange.com/web_EN/exemples/masquage/index.html */
+.sr-only {
+  @include sr-only-attributes;
+}

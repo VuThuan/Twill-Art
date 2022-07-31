@@ -1,0 +1,172 @@
+/***
+
+Intended for very simple m-tables..
+
+```
+<table class="m-table">
+  <caption>
+    @component('components.molecules._m-title-bar')
+  </caption>
+  <thead>
+    <tr>
+      <td>&nbsp;</td>
+      <th><span class="f-module-title-1">General Admission</span></th>
+      <th><span class="f-module-title-1">Chicago Residents</span></th>
+      <th><span class="f-module-title-1">Illinois Residents</span></th>
+      <th><span class="f-module-title-1">Fast Pass</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><span class="title f-module-title-1">Adults</span></th>
+      <td><span class="f-secondary">$25</span></td>
+      <td><span class="f-secondary">$20</span></td>
+      <td><span class="f-secondary">$20</span></td>
+      <td><span class="f-secondary">$35</span></td>
+    </tr>
+    <tr>
+      <th><span class="title f-module-title-1">Seniors</span> <em class="f-secondary">65+</em></th>
+      <td><span class="f-secondary">$19</span></td>
+      <td><span class="f-secondary">$14</span></td>
+      <td><span class="f-secondary">$16</span></td>
+      <td><span class="f-secondary">$29</span></td>
+    </tr>
+    <tr>
+      <th><span class="title f-module-title-1">Students</span></th>
+      <td><span class="f-secondary">$19</span></td>
+      <td><span class="f-secondary">$14</span></td>
+      <td><span class="f-secondary">$16</span></td>
+      <td><span class="f-secondary">$29</span></td>
+    </tr>
+    <tr>
+      <th><span class="title f-module-title-1">Teens</span> <em class="f-secondary">14-17</em></th>
+      <td><span class="f-secondary">$19</span></td>
+      <td><span class="type f-tag">Free</span></td>
+      <td><span class="f-secondary">$16</span></td>
+      <td><span class="f-secondary">$19</span></td>
+    </tr>
+    <tr>
+      <th><span class="title f-module-title-1">Children</span></th>
+      <td colspan="4" rowspan="2"><span><span class="type f-tag">Free</span></span></td>
+    </tr>
+    <tr>
+      <th><span class="title f-module-title-1">Members</span></th>
+    </tr>
+  </tbody>
+</table>
+```
+
+***/
+
+.m-table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  // mirror default .m-title-bar margins
+  &.m-table--no-title {
+    margin-top: 48px;
+
+    @include breakpoint('small+') {
+      margin-top: 60px;
+    }
+
+    @include breakpoint('large+') {
+      margin-top: 72px;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  caption {
+    margin-bottom: 40px;
+  }
+
+  th, td {
+    padding: 15px 12px 23px;
+    border-top: 1px solid $color__rules--primary;
+    border-bottom: 1px solid $color__rules--primary;
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+
+    @include breakpoint('xsmall') {
+      padding-right: 7px;
+    }
+  }
+
+  tr.tr--border-before {
+    th, td {
+      border-top-width: 3px;
+    }
+  }
+
+  tr.tr--border-after {
+    th, td {
+      border-bottom-width: 3px;
+    }
+  }
+
+  &.m-table--minimal {
+    th,
+    td {
+      border-top: 0;
+    }
+
+    tr:last-child th,
+    tr:last-child td {
+      border-bottom: 0;
+    }
+  }
+
+  th:first-child,
+  td:first-child {
+    padding-left: 0;
+  }
+
+  td[rowspan],
+  td[colspan] {
+    background: $color__bg--primary;
+    text-align: left;
+    vertical-align: middle;
+
+    @include breakpoint('small+') {
+      text-align: center;
+    }
+  }
+
+  .f-module-title-1 {
+    @include tucked-align-top($f-module-title-1);
+    display: inline-block;
+  }
+
+  .f-secondary {
+    @include tucked-align-top($f-secondary);
+    display: inline-block;
+    font-style: normal;
+  }
+
+  .f-tag {
+    @include tucked-align-top($f-tag);
+    display: inline-block;
+    color: $color__text--title;
+  }
+
+  .f-caption {
+    @include untuck;
+    margin-top: 16px;
+
+    h3 {
+      text-decoration: underline;
+      font-style: italic;
+    }
+  }
+}
+
+.m-table--word-wrap {
+  th, td {
+    white-space: normal;
+  }
+}

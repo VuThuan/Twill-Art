@@ -1,0 +1,62 @@
+/***
+
+Search active
+============================
+
+Global search active, show it and the mask.
+
+Additional state for if the auto complete has been used.
+
+
+***/
+
+.s-search-active {
+
+  #a17 {
+    @supports (not (backdrop-filter: blur(5px))) and (not (-webkit-backdrop-filter: blur(5px))) {
+      filter: blur(3px);
+    }
+  }
+
+  .g-search {
+    display: block;
+    transform: translateY(0%);
+    transition: transform .4s .25s $bezier--marius-ease;
+  }
+
+  .g-search__inner {
+    opacity: 1;
+  }
+
+  .g-mask {
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color__white, .5);
+    opacity: 1;
+
+    @supports (backdrop-filter: blur(5px)) or (-webkit-backdrop-filter: blur(5px)) {
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+    }
+  }
+}
+
+.s-search-active--autocomplete {
+  .g-search__suggested {
+    display: none;
+  }
+
+  .g-search__scroll {
+    height: 100vh;
+    transition: height .25s $bezier--marius-ease;
+  }
+
+  .g-search__autocomplete {
+    opacity: 1;
+    transition: opacity .25s .5s linear;
+  }
+
+  .g-mask {
+    background-color: rgba(0,0,0,0);
+  }
+}

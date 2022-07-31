@@ -1,0 +1,299 @@
+/***
+
+tag
+=======
+
+Tags and their variants,
+
+```
+<a href="#" class="tag f-tag">Kanan Jarrus</a>
+<a href="#" class="tag f-tag">Caleb Dume</a>
+<a href="#" class="tag tag--secondary f-tag">Caleb Dume</a>
+<a href="#" class="tag tag--tertiary f-tag">Caleb Dume</a>
+<a href="#" class="tag tag--quaternary f-tag">Caleb Dume</a> <br>
+<a href="#" class="tag tag--quinary f-tag">Caleb Dume</a> <br>
+<a href="#" class="tag f-tag-2">Ezra</a> <br>
+<a href="#" class="tag tag--senary f-tag">Chopper</a> <br>
+<a href="#" class="tag tag--senary tag--w-image f-tag">Sabine</a>
+```
+
+***/
+
+
+.tag {
+  display: inline-block;
+  padding-right: 12px;
+  padding-left: 12px;
+  border: 0;
+  border-radius: $border-radius;
+  background-color: $color__black--5;
+  color: $color__black--54;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-appearance: none;
+
+  & + & {
+    margin-left: 10px;
+  }
+}
+
+button.tag,
+a.tag {
+  @extend %link-transition;
+  cursor: pointer;
+}
+
+a.tag:hover,
+a.tag:focus {
+  background-color: $color__black--10;
+}
+
+a.tag:active {
+  background-color: $color__black--5;
+}
+
+.tag[class*=f-]::before,
+.tag[class*=f-]::after {
+  content: none;
+  display: none;
+}
+
+.tag.f-tag,
+.tag.f-tag-2 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.tag--l.f-tag,
+.tag--l.f-tag-2 {
+  padding-top: 12px;
+  padding-bottom: 11px;
+}
+
+
+.tag--primary {
+  background-color: $color__link;
+  color: $color__white;
+}
+
+a.tag--primary:hover,
+a.tag--primary:focus {
+  background-color: $color__link--hover;
+  color: $color__white;
+}
+
+a.tag--primary:active {
+  background-color: $color__link--active;
+  color: $color__white;
+}
+
+
+
+.tag--secondary {
+  background-color: $color__black--5;
+  color: $color__text--title;
+}
+
+a.tag--secondary:hover,
+a.tag--secondary:focus {
+  background-color: $color__black--10;
+  color: $color__text--title;
+}
+
+a.tag--secondary:active {
+  background-color: $color__black--5;
+  color: $color__text--title;
+}
+
+
+
+.tag--tertiary {
+  padding-right: 11px;
+  padding-left: 11px;
+  border: 1px solid $color__rules--secondary;
+  background-color: $color__white;
+  color: $color__text--limited;
+}
+
+a.tag--tertiary:hover,
+a.tag--tertiary:focus {
+  border-color: $color__rules--primary;
+  background-color: $color__white;
+  color: $color__text--limited;
+}
+
+a.tag--tertiary:active {
+  border-color: $color__rules--secondary;
+  background-color: $color__white;
+  color: $color__text--limited;
+}
+
+.tag--tertiary.f-tag {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+
+
+
+.tag--quaternary {
+  background-color: $color__black--90;
+  color: $color__white;
+}
+
+.tag--quaternary .icon--close {
+  color: $color__text--secondary;
+}
+
+.tag--l .icon--close {
+  position: relative;
+  top: -1px;
+
+  @include breakpoint('medium+') {
+    top: -2px;
+  }
+}
+
+a.tag--quaternary:hover,
+a.tag--quaternary:focus {
+  background-color: $color__black--80;
+  color: $color__white;
+}
+
+a.tag--quaternary:active {
+  background-color: $color__black--90;
+  color: $color__white;
+}
+
+
+
+.tag--quinary {
+  padding-right: 11px;
+  padding-left: 11px;
+  border: 1px solid $color__rules--secondary;
+  background-color: $color__white;
+  color: $color__text--secondary;
+}
+
+a.tag--quinary:hover,
+a.tag--quinary:focus {
+  //border-color: $color__text--secondary;
+  //background-color: $color__white;
+  //color: $color__text--secondary;
+  border-color: $color__black--90;
+  background-color: $color__black--90;
+  color: $color__white;
+}
+
+a.tag--quinary:active {
+  //border-color: $color__rules--secondary;
+  //background-color: $color__white;
+  //color: $color__text--secondary;
+  border-color: $color__black--80;
+  background-color: $color__black--80;
+  color: $color__white;
+}
+
+.tag--quinary.f-tag {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+
+
+.tag--senary {
+  position: relative;
+  height: 40px;
+  padding-right: 16px;
+  padding-left: 16px;
+  background: transparent;
+  color: $color__text--secondary;
+  line-height: 40px;
+
+  &.tag--w-image {
+    padding-left: 56px;
+  }
+}
+
+.tag--senary[class*=f-]::before {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid $color__rules--primary;
+  border-radius: $border-radius;
+}
+
+.tag--senary.f-tag,
+.tag--senary.f-tag-2 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.tag--senary.tag--w-image img {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+a.tag--senary::before {
+  @extend %link-transition;
+}
+
+a.tag--senary:hover,
+a.tag--senary:focus {
+  background-color: transparent;
+  color: $color__text--secondary;
+
+  &::before {
+    border-color: $color__text--secondary;
+  }
+}
+
+a.tag--senary:active {
+  background-color: transparent;
+  color: $color__text--secondary;
+
+  &::before {
+    border-color: $color__rules--secondary;
+  }
+}
+
+// Variations shared by journal issue, journal article, and magazine issue
+.tag--magazine,
+.tag--journal {
+  padding-right: 16px;
+  text-align: left;
+
+  // For when the sidebar scrollbar appears
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @include breakpoint('large+') {
+    display: block;
+  }
+}
+
+// Specificity to override tag--senary.tag--w-image
+.tag--journal.tag--w-image {
+  height: 60px;
+  line-height: 23px;
+  padding-top: 7px;
+  padding-left: 76px;
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -1,0 +1,99 @@
+
+.m-mini-promo {
+  position: relative;
+  display: flex;
+  flex-flow: row-reverse wrap;
+  align-items: flex-start;
+  margin-top: 30px;
+  padding-top: .2px;
+
+  @include breakpoint('small+') {
+    margin-top: 40px;
+    flex-flow: row wrap;
+  }
+
+  @include breakpoint('large+') {
+    margin-top: 60px;
+  }
+}
+
+.m-mini-promo::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-color: $color__rules--primary;
+}
+
+.m-mini-promo img,
+.m-mini-promo video {
+  flex: 0 0 auto;
+  width: colspan(23, xsmall);
+  height: auto;
+  margin-top: 20px;
+  margin-left: colspan(3, xsmall);
+
+  @include breakpoint('small+') {
+    width: colspan(13, small);
+    margin-top: 40px;
+    margin-right: colspan(2, small);
+    margin-left: 0;
+  }
+
+  @include breakpoint('medium+') {
+    width: colspan(13, medium);
+    margin-right: colspan(2, medium);
+  }
+
+  @include breakpoint('large+') {
+    width: colspan(13, large);
+    margin-right: colspan(2, large);
+  }
+
+  @include breakpoint('xlarge') {
+    width: colspan(13, xlarge);
+    margin-right: colspan(2, xlarge);
+  }
+}
+
+.m-mini-promo__text {
+  flex: 1;
+}
+
+.m-mini-promo .title {
+  @include tucked-margin-top($f-module-title-1, ('xsmall': 32, 'small+': 52, 'medium+': 56));
+}
+
+.m-mini-promo .f-secondary {
+  @include tucked-align-top($f-secondary);
+}
+
+.m-mini-promo .btn {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  margin-top: 28px;
+  padding-right: 0;
+  padding-left: 0;
+
+  @include breakpoint('small+') {
+    margin-top: 40px;
+  }
+
+  @include breakpoint('medium+') {
+    width: colspan(13, medium);
+    margin-left: colspan(2, medium);
+  }
+
+  @include breakpoint('large+') {
+    width: colspan(13, large);
+    margin-left: colspan(2, large);
+  }
+
+  @include breakpoint('xlarge') {
+    width: colspan(13, xlarge);
+    margin-left: colspan(2, xlarge);
+  }
+}

@@ -1,0 +1,16 @@
+/***
+
+date
+==========
+
+Sets color of date text
+
+```
+<span class="date f-secondary">13th December</span>
+```
+
+***/
+
+.date {
+  color: $color__text--secondary;
+}

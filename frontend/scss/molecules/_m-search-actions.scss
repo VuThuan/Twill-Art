@@ -1,0 +1,75 @@
+
+.m-search-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: row nowrap;
+  margin-top: 36px;
+  color: $color__text--secondary;
+}
+
+.m-search-actions > li {
+  flex: 0 0 auto;
+  margin-left: 20px;
+}
+
+.m-search-actions > li:first-child {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.m-search-actions button,
+.m-search-actions a,
+.m-search-actions span {
+  display: block;
+}
+
+.m-search-actions span,
+.m-search-actions button {
+  @include untuck;
+  padding: 0;
+  border: 0 none;
+  background: transparent;
+}
+
+.m-search-actions a,
+.m-search-actions button {
+  color: $color__link;
+  cursor: pointer;
+
+  &:hover,
+  &:focus:hover {
+    color: $color__link--hover;
+  }
+
+  &:active:hover {
+    color: $color__link--active;
+  }
+}
+
+.m-search-actions svg {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+}
+
+.m-search-actions .icon--filter--24 {
+  position: relative;
+  top: -2px;
+}
+
+.m-search-actions button .m-search-actions__label-show {
+  display: inline;
+
+  .s-collection-filters-active & {
+    display: none;
+  }
+}
+
+.m-search-actions button .m-search-actions__label-hide {
+  display: none;
+
+  .s-collection-filters-active & {
+    display: inline;
+  }
+}

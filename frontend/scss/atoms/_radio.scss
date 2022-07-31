@@ -1,0 +1,108 @@
+/***
+
+radio
+=============
+
+```
+<span class="radio f-secondary">
+  <input type="radio" value="option1" id="option1" name="options">
+  <span class="f-secondary">
+    <label for="option1">Option 1</label>
+  </span>
+</span>
+<span class="radio f-secondary">
+  <input type="radio" value="option2" id="option2" name="options" checked>
+  <span class="f-secondary">
+    <label for="option2">Option 2</label>
+  </span>
+</span>
+<span class="radio f-secondary">
+  <input type="radio" value="option3" id="option3" name="options" disabled>
+  <span class="f-secondary">
+    <label for="option3">Option 3 disabled</label>
+  </span>
+</span>
+```
+
+
+***/
+
+.radio input[type=radio] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 0;
+  border: 0 none;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+}
+
+.radio label {
+  display: block;
+  position: relative;
+  padding-left: 34px;
+  color: $color__input-text;
+  cursor: pointer;
+}
+
+.radio label:hover,
+.radio input[type=radio]:focus + span label {
+  color: $color__input-text--focus;
+}
+
+.radio input[type=radio]:focus + span label {
+  //@extend %default-focus-style;
+}
+
+.radio label::before,
+.radio label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid $color__input-border;
+  border-radius: 50%;
+
+  @include breakpoint('large+') {
+    top: 6px;
+  }
+}
+
+.radio label::after {
+  border: 0 none;
+  background-color: $color__white;
+  opacity: 0;
+  transform: scale(.1);
+  transition: all .15s $bezier__bounce;
+}
+
+.radio input[type=radio]:focus + span label::before {
+  border-color: $color__input-border--focus;
+}
+
+.radio label:hover::before {
+  border-color: $color__input-border--hover;
+}
+
+.radio input[type=radio]:checked + span label::before {
+  border-color: $color__input-border--checked;
+  background-color: $color__input-border--checked;
+}
+
+.radio input[type=radio]:checked + span label::after {
+  opacity: 1;
+  transform: scale(.375);
+}
+
+.radio input[type=radio]:disabled + span label {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.radio.s-error label::before {
+  border-color: $color__input-border--error;
+}

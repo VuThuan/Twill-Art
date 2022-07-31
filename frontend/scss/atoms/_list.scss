@@ -1,0 +1,76 @@
+/***
+
+list
+========
+
+Basic styles to both `ul` and `ol`. `_o-blocks.scss` extends this onto lists with article bodies.
+
+```
+<ul class="list f-body">
+  <li>Check your spelling</li>
+  <li>Try searching for fewer terms to broaden your results.</li>
+</ul>
+<ol class="list f-body">
+  <li>Check your spelling</li>
+  <li>Try searching for fewer terms to broaden your results.</li>
+</ol>
+<ul class="list f-body">
+  <li>Check your spelling</li>
+  <li>
+    Try searching for fewer terms to broaden your results.
+    <ol class="list f-body">
+      <li>Check your spelling</li>
+      <li>
+        Try searching for fewer terms to broaden your results.
+        <ul class="listf-body">
+          <li>Check your spelling</li>
+          <li>Try searching for fewer terms to broaden your results.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+<ul class="list list--inline f-body">
+  <li>Check your spelling</li>
+  <li>Try searching for fewer terms to broaden your results.</li>
+</ul>
+```
+
+***/
+
+.list {
+  padding-left: 1.1em;
+}
+
+.list > li {
+  padding-left: 12px;
+}
+
+ul.list > li {
+  list-style-type: disc;
+}
+
+
+ol.list > li {
+  list-style-type: decimal;
+}
+
+ul.list ul.list > li {
+  list-style-type: circle;
+}
+
+
+ul.list--inline,
+ol.list--inline {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.list--inline > li {
+  display: inline;
+  padding-left: 0;
+}
+
+.list--inline > li:first-child:not(:only-child)::after {
+  content: ", ";
+}

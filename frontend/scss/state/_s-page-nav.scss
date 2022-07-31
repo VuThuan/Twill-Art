@@ -1,0 +1,89 @@
+/***
+
+Page nav
+============================
+
+And page-nav-swapping, are states that appear during the ajax page transitions.
+
+Shows the mask to fade out the page, fades back in after. Has variations for filters or search being open.
+
+
+***/
+
+.s-page-nav {
+
+  .g-mask {
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color__white, 1);
+    opacity: .25;
+  }
+
+  &.s-ajax-mode-2 {
+    .g-mask {
+      opacity: .5;
+    }
+
+    .g-ajax-loader {
+      left: 50%;
+      top: 50%;
+      opacity: 1;
+    }
+
+    .progress-bar {
+      display: none;
+    }
+  }
+}
+
+.s-page-nav-swapping {
+
+  .g-mask {
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color__white, 1);
+    opacity: 1;
+  }
+
+  &.s-ajax-mode-2 {
+    .progress-bar {
+      display: none;
+    }
+  }
+}
+
+
+.s-collection-search-active.s-page-nav,
+.s-collection-filters-active.s-page-nav,
+.s-collection-search-active.s-page-nav-swapping,
+.s-collection-filters-active.s-page-nav-swapping {
+  .g-mask {
+    @include breakpoint('medium+') {
+      background-color: rgba($color__white, .75);
+      opacity: 1;
+    }
+
+    @include breakpoint('small-') {
+      background-color: rgba($color__bg--tertiary, .25);
+      opacity: 1;
+    }
+  }
+
+  .g-ajax-loader {
+    left: 50%;
+    top: 50%;
+    opacity: 1;
+  }
+
+  .progress-bar {
+    display: none;
+  }
+
+  .o-collection-filters::after {
+    @include breakpoint('small-') {
+      right: 0;
+      bottom: 0;
+      opacity: .5;
+    }
+  }
+}

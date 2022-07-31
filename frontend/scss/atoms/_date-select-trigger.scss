@@ -1,0 +1,114 @@
+/***
+
+date select trigger
+==========
+
+Opens up a data selecting modal.
+
+```
+<span class="date-select-trigger" data-behavior="selectDate" data-selectDate-mode="range">
+  <button class="date-select-trigger__open">
+    <svg class="icon--calendar"><use xlink:href="#icon--calendar" /></svg>
+    <span class="date-select-trigger__label">Select date</span>
+    <span class="date-select-trigger__selected-date"></span>
+  </button>
+  <button class="date-select-trigger__clear"><svg class="icon--close-circle"><use xlink:href="#icon--close-circle" /></svg></button>
+</span>
+<span class="date-select-trigger s-date-selected" data-behavior="selectDate" data-selectDate-mode="range">
+  <button class="date-select-trigger__open">
+    <svg class="icon--calendar"><use xlink:href="#icon--calendar" /></svg>
+    <span class="date-select-trigger__label f-buttons">Select date</span>
+    <span class="date-select-trigger__selected-date f-buttons">13 Dec, 2017</span>
+  </button>
+  <button class="date-select-trigger__clear"><svg class="icon--close-circle"><use xlink:href="#icon--close-circle" /></svg></button>
+</span>
+```
+
+***/
+/*
+
+##### PHP include
+
+views/components/atoms/date-select-trigger.blade.php
+
+Variable | Purpose | Required?
+--- | --- | ---
+$variation | variation (CSS class) | No
+$font | font of the label | No, defaults to `f-link`
+$gtmAttributes | for adding Google Tag Manager attributes | No
+$slot | label for date select | Yes
+
+* Demonstrated in **statics/toybox**
+* Demonstrated in **statics/events**
+
+Example usage:
+
+```
+<pre><code>@component('components.atoms._date-select-trigger')
+    @slot('gtmAttributes','data-gtm-event="event-calendar" data-gtm-event-category="in-page-link"')
+    @if (request('start') && request('end'))
+        {{ \Carbon\Carbon::parse(request('start'))->format('M j, Y') }} – {{ \Carbon\Carbon::parse(request('end'))->format('M j, Y') }}
+    @else
+        Pick a date
+    @endif
+@endcomponent</code></pre>
+```
+
+***/
+
+.date-select-trigger {
+  display: inline;
+  position: relative;
+}
+
+.date-select-trigger__selected-date,
+.date-select-trigger__clear {
+  display: none;
+}
+
+.date-select-trigger button {
+  padding: 0;
+  border: 0 none;
+  background: none;
+  color: $color__link;
+  cursor: pointer;
+
+  font: inherit;
+  line-height: 1;
+
+  &:hover,
+  &:focus:hover {
+    color: $color__link--hover;
+  }
+
+  &:active:hover {
+    color: $color__link--active;
+  }
+}
+
+.date-select-trigger__open {
+}
+
+.date-select-trigger__label {
+  display: inline-block;
+}
+
+.date-select-trigger__clear {
+  margin-left: 6px;
+}
+
+
+
+
+
+.date-select-trigger.s-date-selected {
+
+  .date-select-trigger__label {
+    display: none;
+  }
+
+  .date-select-trigger__selected-date,
+  .date-select-trigger__clear {
+    display: inline-block;
+  }
+}

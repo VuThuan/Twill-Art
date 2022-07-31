@@ -1,0 +1,41 @@
+/***
+
+title
+=================
+
+Sets color and link styles of title text
+
+```
+<strong class="title f-display-1">Cauleen Smith: Human_3.0 Reading Listz</strong> <br>
+<strong class="title f-module-title-1">Cauleen Smith: Human_3.0 Reading Listz</strong> <br>
+<strong class="title f-list-3"><a href="#">Cauleen Smith: Human_3.0 Reading Listz</a></strong> <br>
+<strong class="title f-list-2">Rock Sculpture</strong> <br>
+<strong class="title--w-right-arrow f-list-3"><a href="#">Link with arrow <span class='title__arrow' aria-hidden="true">&rsaquo;</span></a></strong> <br>
+```
+
+***/
+
+.title,
+.title a {
+  color: $color__text--title;
+}
+
+a.title:hover,
+.title a:hover,
+a:hover .title,
+.m-listing__link:hover + .m-listing__meta .title {
+  color: $color__text--secondary;
+}
+
+
+.title--w-right-arrow {
+  display: block;
+  position: relative;
+  padding-right: 20px;
+}
+
+.title--w-right-arrow .title__arrow {
+  position: absolute;
+  right: 0;
+  top: 4px;
+}

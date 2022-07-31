@@ -1,0 +1,20 @@
+{
+    "id": "00c47447-a7a7-53b1-b9b9-ce8c4c8a43db",
+    "api_model": "event-occurrences",
+    "api_link": "https://api.artic.edu/api/v1/event-occurrences/00c47447-a7a7-53b1-b9b9-ce8c4c8a43db",
+    "title": "Tour: Highlights of the Art Institute (Sunday)",
+    "event_id": 5441,
+    "short_description": "Looking for a good place to start your visit? Join an educator for a 30-minute tour of the Art Institute's collection.",
+    "description": "<p>Looking for a good place to start your museum visit? Join an educator for a 30-minute tour of museum icons and lesser-known treasures. During this participatory experience, you\u2019ll connect with works from across the collection and share thoughts and ideas with fellow visitors. All are welcome, regardless of comfort level or experience with art. <strong>Tours begin promptly at noon\u2014please be sure to arrive on time.</strong><br></p><p>Highlights tours of the museum take place every Monday, Friday, and Sunday, and highlights tours of the Modern Wing happen every Thursday and Saturday. <a href=\"https://www.artic.edu/events?type=6\" rel=\"noopener noreferrer\" target=\"_blank\">See all upcoming highlights tours</a>.</p><p>Please note that in-person tours may be canceled or postponed due to unforeseen circumstances.</p><p>If you have any questions about programming, please reach out to&nbsp;<a href=\"mailto:museum-programs@artic.edu\" rel=\"noopener noreferrer\">museum-programs@artic.edu</a>. For questions related to accessibility accommodations, please email&nbsp;<a href=\"mailto:access@artic.edu\" rel=\"noopener noreferrer\">access@artic.edu</a>.&nbsp;</p><p><strong>Learn More about Highlights Tours<br><br>What is considered a highlight of the collection?</strong><br>Every object in our collection is worth highlighting. We highlight artworks by looking closely, sharing information, and finding fresh interpretations, even of objects we may have seen many times before. Highlights tours are an opportunity to focus our attention on outstanding works of art that inspire meaningful discussion.<span id=\"docs-internal-guid-46f2276c-7fff-33dd-10b1-7d26daf0b83f\" class=\"ql-anchor\"><br><br></span><strong>What happens on a participatory tour?</strong><br>In addition to providing thought-provoking stories and information about works of art, our educators will make space for you to share your ideas throughout the tour as a means of tapping into the collective wisdom of our community. They will ask questions and prompt a variety of interactive responses so that we can have a rich discussion informed by research, observation, and lived experience. We learn more when we do it together.</p><p><strong>Who leads highlights tours?</strong><br>Highlights tours are led by Art Institute educators\u2014members of staff and the museum community who are deeply knowledgeable about art, creative practice, and the collection. They are dynamic presenters trained to connect people with art in ways that are fun, challenging, accessible, and relevant to our everyday lives. Educators design their own conversations so that each tour is unique and enriched by the interests of the facilitator and our visitors. They also really love talking about art.</p>",
+    "image_url": "https://artic-web.imgix.net/58c2b64f-5cf8-4978-8b33-915ac71c26f8/IM031150_012-int1.jpg?rect=0%2C188%2C3000%2C1688&auto=format%2Ccompress&q=80&fit=crop&crop=faces%2Cedges%2Centropy&w=1200&h=675",
+    "is_private": false,
+    "start_at": "2022-06-19T12:00:00-05:00",
+    "end_at": "2022-06-19T12:30:00-05:00",
+    "location": "Meet by the Woman's Board Grand Staircase (Gallery 100)",
+    "button_url": null,
+    "button_text": "Buy Tickets",
+    "button_caption": "<p><strong>Free with museum admission</strong><br>Tours begin promptly at noon.<br></p>",
+    "last_updated_source": "2022-06-07T13:01:39-05:00",
+    "last_updated": "2022-06-18T23:17:39-05:00",
+    "timestamp": "2022-06-19T01:48:49-05:00"
+}

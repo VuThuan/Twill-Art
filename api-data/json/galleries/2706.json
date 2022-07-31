@@ -1,0 +1,17 @@
+{
+    "id": 2706,
+    "api_model": "galleries",
+    "api_link": "https://api.artic.edu/api/v1/galleries/2706",
+    "title": "Gallery 58",
+    "latitude": 41.879311148385,
+    "longitude": -87.621816694736,
+    "type": "AIC Gallery",
+    "tgn_id": null,
+    "is_closed": true,
+    "number": "58",
+    "floor": "LL",
+    "latlon": "41.879311148385,-87.621816694736",
+    "last_updated_source": "2022-06-14T00:15:17-05:00",
+    "last_updated": "2022-06-14T00:15:53-05:00",
+    "timestamp": "2022-06-19T01:34:09-05:00"
+}

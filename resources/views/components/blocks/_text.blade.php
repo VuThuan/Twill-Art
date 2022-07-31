@@ -1,0 +1,1 @@
+<{{ $tag ?? 'p' }} class="{{ $font ?? 'f-body' }}{{ (isset($variation)) ? ' '.$variation : '' }}"{!! (isset($id)) ? ' id="'.$id.'"' : '' !!}{!! (isset($itemprop)) ? ' itemprop="'.$itemprop.'"' : '' !!}>{!! $slot !!}</{{ $tag ?? 'p' }}>
